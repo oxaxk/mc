@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page-bg: #ffffff;
+  --page-fg: 15 23 42;
+  --page-fg-solid: rgb(var(--page-fg) / 1);
+  --page-fg-85: rgb(var(--page-fg) / 0.85);
+  --page-fg-80: rgb(var(--page-fg) / 0.8);
+  --page-fg-70: rgb(var(--page-fg) / 0.7);
+  --page-fg-60: rgb(var(--page-fg) / 0.6);
+  --section-glass: rgba(234, 242, 255, 0.65);
+  --card-glass: rgba(255, 255, 255, 0.82);
+
+  /* Accent (soft blue for light mode; used to de-neon cyan headings) */
+  --accent: 29 120 169;
+  --accent-solid: rgb(var(--accent) / 1);
+}
+
+html[data-theme='dark'],
+html.dark {
+  --page-bg: #020617;
+  --page-fg: 255 255 255;
+  --page-fg-solid: rgb(var(--page-fg) / 0.92);
+  --page-fg-85: rgb(var(--page-fg) / 0.85);
+  --page-fg-80: rgb(var(--page-fg) / 0.8);
+  --page-fg-70: rgb(var(--page-fg) / 0.7);
+  --page-fg-60: rgb(var(--page-fg) / 0.6);
+  --section-glass: rgba(2, 6, 23, 0.72);
+  --card-glass: rgba(2, 6, 23, 0.6);
+
+  /* Accent (slightly softer cyan for dark mode) */
+  --accent: 34 170 195;
+  --accent-solid: rgb(var(--accent) / 1);
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  background: var(--page-bg);
+  color: var(--page-fg-solid);
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+html[data-theme='dark'],
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--page-fg-solid);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* De-neon: map common Tailwind cyan text utilities to our accent in light mode */
+html[data-theme='light'] .text-cyan-300,
+html[data-theme='light'] .text-cyan-400,
+html[data-theme='light'] .text-cyan-500,
+html[data-theme='light'] .text-sky-400,
+html[data-theme='light'] .text-sky-500,
+html[data-theme='light'] .text-\[\#22d3ee\],
+html[data-theme='light'] .text-\[\#06b6d4\] {
+  color: var(--accent-solid) !important;
+}
+
+/* Keep dark mode cohesive: also slightly soften the same neon classes */
+html[data-theme='dark'] .text-cyan-300,
+html[data-theme='dark'] .text-cyan-400,
+html[data-theme='dark'] .text-cyan-500,
+html[data-theme='dark'] .text-sky-400,
+html[data-theme='dark'] .text-sky-500,
+html[data-theme='dark'] .text-\[\#22d3ee\],
+html[data-theme='dark'] .text-\[\#06b6d4\],
+html.dark .text-cyan-300,
+html.dark .text-cyan-400,
+html.dark .text-cyan-500,
+html.dark .text-sky-400,
+html.dark .text-sky-500,
+html.dark .text-\[\#22d3ee\],
+html.dark .text-\[\#06b6d4\] {
+  color: var(--accent-solid) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  letter-spacing: normal;
+}
