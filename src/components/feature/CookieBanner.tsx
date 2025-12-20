@@ -4,6 +4,30 @@ type ConsentStatus = 'accepted' | 'rejected' | 'unset';
 
 const STORAGE_KEY = 'cookie-consent-v1';
 
+function loadRemixIconsOnce() {
+  if (typeof document === 'undefined') return;
+  const existing = document.querySelector("link[data-remixicon]");
+  if (existing) return;
+
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css';
+  link.setAttribute('data-remixicon', 'true');
+  document.head.appendChild(link);
+}
+
+function loadFontAwesomeOnce() {
+  if (typeof document === 'undefined') return;
+  const existing = document.querySelector("link[data-fontawesome]");
+  if (existing) return;
+
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+  link.setAttribute('data-fontawesome', 'true');
+  document.head.appendChild(link);
+}
+
 function getInitialStatus(): ConsentStatus {
   if (typeof window === 'undefined') return 'unset';
   const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -45,6 +69,8 @@ export default function CookieBanner() {
     setStatus(initial);
     if (initial === 'accepted') {
       loadGoogleAdsTag();
+      loadRemixIconsOnce();
+      loadFontAwesomeOnce();
     }
 
     const onOpen = () => setForceOpen(true);
@@ -58,6 +84,8 @@ export default function CookieBanner() {
     setForceOpen(false);
     window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: { status: 'accepted' } }));
     loadGoogleAdsTag();
+    loadRemixIconsOnce();
+    loadFontAwesomeOnce();
   };
 
   const handleReject = () => {
