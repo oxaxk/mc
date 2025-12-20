@@ -10,7 +10,7 @@ export default function Datenschutz() {
           <h1 className="text-3xl md:text-4xl font-semibold mb-8 text-[color:var(--page-fg)]">
             Datenschutzerklärung
           </h1>
-          
+
           <div className="prose prose-lg max-w-none prose-headings:text-[color:var(--page-fg)] prose-p:text-[color:var(--page-fg)] prose-li:text-[color:var(--page-fg)] prose-strong:text-[color:var(--page-fg)] prose-a:text-[#0F3D8C] dark:prose-a:text-[#22d3ee] prose-a:underline hover:prose-a:no-underline">
             <h2 className="text-2xl font-semibold mb-4 mt-8">1. Datenschutz auf einen Blick</h2>
 
@@ -26,8 +26,8 @@ export default function Datenschutz() {
             <p className="mb-4">
               <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong>
               <br />
-              Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie
-              dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.
+              Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten können Sie
+              dem Impressum dieser Website entnehmen.
             </p>
             <p className="mb-4">
               <strong>Wie erfassen wir Ihre Daten?</strong>
@@ -44,7 +44,8 @@ export default function Datenschutz() {
               <strong>Wofür nutzen wir Ihre Daten?</strong>
               <br />
               Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere
-              Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.
+              Daten können zur Analyse Ihres Nutzerverhaltens oder für Werbezwecke verwendet werden, sofern Sie hierin
+              eingewilligt haben.
             </p>
             <p className="mb-4">
               <strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong>
@@ -61,27 +62,22 @@ export default function Datenschutz() {
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">2. Hosting</h2>
-            <p className="mb-4">Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
-
-            <h3 className="text-xl font-semibold mb-3 mt-6">IONOS</h3>
             <p className="mb-4">
-              Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur (nachfolgend „IONOS“). Wenn Sie unsere
-              Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adresse.
+              Diese Website wird bei einem externen Dienstleister (Hoster) betrieben. Die personenbezogenen Daten, die auf
+              dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich vor allem
+              um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen,
+              Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.
             </p>
             <p className="mb-4">
-              Weitere Informationen entnehmen Sie der Datenschutzerklärung von IONOS:{' '}
-              <a href="https://www.ionos.de/terms-gtc/datenschutz" target="_blank" rel="noreferrer">
-                https://www.ionos.de/terms-gtc/datenschutz
-              </a>
-              .
+              Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und
+              bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten
+              Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
             </p>
             <p className="mb-4">
-              Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes
-              Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung
-              abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25
-              Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im
-              Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit
-              widerrufbar.
+              Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage
+              von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies
+              oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG
+              umfasst. Die Einwilligung ist jederzeit widerrufbar.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">3. Allgemeine Hinweise und Pflichtinformationen</h2>
@@ -106,27 +102,13 @@ export default function Datenschutz() {
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Hinweis zur verantwortlichen Stelle</h3>
             <p className="mb-4">
-              Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
-            </p>
-            <p className="mb-4">
-              <strong>MyClean Service</strong>
-              <br />
-              Inhaber: Aldan Sabotic
-              <br />
-              Wollankstraße 61c
-              <br />
-              13359 Berlin
-              <br />
-              Telefon: +49 152 17782301
-              <br />
-              E-Mail: info@myclean-service.de
-              <br />
-              Website: https://myclean-service.de
-            </p>
-            <p className="mb-4">
               Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über
               die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.)
               entscheidet.
+            </p>
+            <p className="mb-4">
+              Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist der im Impressum genannte
+              Diensteanbieter. Die entsprechenden Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Speicherdauer</h3>
@@ -149,13 +131,15 @@ export default function Datenschutz() {
               personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1
               lit. a DSGVO. Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät
               (z. B. via Device-Fingerprinting) eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von
-              § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar. Sind Ihre Daten zur Vertragserfüllung oder zur
-              Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage des Art. 6 Abs. 1
-              lit. b DSGVO. Des Weiteren verarbeiten wir Ihre Daten, sofern diese zur Erfüllung einer rechtlichen
-              Verpflichtung erforderlich sind auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO. Die Datenverarbeitung kann ferner
-              auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen. Über die jeweils im
-              Einzelfall einschlägigen Rechtsgrundlagen wird in den folgenden Absätzen dieser Datenschutzerklärung
-              informiert.
+              § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.
+            </p>
+            <p className="mb-4">
+              Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich,
+              verarbeiten wir Ihre Daten auf Grundlage des Art. 6 Abs. 1 lit. b DSGVO. Des Weiteren verarbeiten wir Ihre
+              Daten, sofern diese zur Erfüllung einer rechtlichen Verpflichtung erforderlich sind, auf Grundlage von Art. 6
+              Abs. 1 lit. c DSGVO. Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach
+              Art. 6 Abs. 1 lit. f DSGVO erfolgen. Über die jeweils im Einzelfall einschlägigen Rechtsgrundlagen wird in den
+              folgenden Absätzen dieser Datenschutzerklärung informiert.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Empfänger von personenbezogenen Daten</h3>
@@ -165,9 +149,12 @@ export default function Datenschutz() {
               personenbezogene Daten nur dann an externe Stellen weiter, wenn dies im Rahmen einer Vertragserfüllung
               erforderlich ist, wenn wir gesetzlich hierzu verpflichtet sind (z. B. Weitergabe von Daten an Steuerbehörden),
               wenn wir ein berechtigtes Interesse nach Art. 6 Abs. 1 lit. f DSGVO an der Weitergabe haben oder wenn eine
-              sonstige Rechtsgrundlage die Datenweitergabe erlaubt. Beim Einsatz von Auftragsverarbeitern geben wir
-              personenbezogene Daten unserer Kunden nur auf Grundlage eines gültigen Vertrags über Auftragsverarbeitung
-              weiter. Im Falle einer gemeinsamen Verarbeitung wird ein Vertrag über gemeinsame Verarbeitung geschlossen.
+              sonstige Rechtsgrundlage die Datenweitergabe erlaubt.
+            </p>
+            <p className="mb-4">
+              Beim Einsatz von Auftragsverarbeitern geben wir personenbezogene Daten unserer Kunden nur auf Grundlage eines
+              gültigen Vertrags über Auftragsverarbeitung weiter. Im Falle einer gemeinsamen Verarbeitung wird ein Vertrag
+              über gemeinsame Verarbeitung geschlossen.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">
@@ -260,7 +247,19 @@ export default function Datenschutz() {
               eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-4 mt-8">4. Datenerfassung auf dieser Website</h2>
+            <h3 className="text-xl font-semibold mb-3 mt-6">
+              Keine Abmahnung ohne vorherige Kontaktaufnahme
+            </h3>
+            <p className="mb-4">
+              Im Falle von wettbewerbsrechtlichen, domainrechtlichen, urheberrechtlichen oder ähnlichen Problemen bitten wir
+              Sie, uns zur Vermeidung unnötiger Rechtsstreitigkeiten und Kosten bereits im Vorfeld zu kontaktieren. Eine
+              Kostennote einer anwaltlichen Abmahnung ohne vorhergehende Kontaktaufnahme mit uns wird im Sinne der
+              Schadensminderungspflicht als unbegründet zurückgewiesen.
+            </p>
+
+            <h2 className="text-2xl font-semibold mb-4 mt-8">
+              4. Datenerfassung auf dieser Website
+            </h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Server-Log-Dateien</h3>
             <p className="mb-4">
@@ -300,28 +299,22 @@ export default function Datenschutz() {
             <p className="mb-4">
               Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern,
               Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach
-              abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen
-              – bleiben unberührt.
+              abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere
+              Aufbewahrungsfristen – bleiben unberührt.
             </p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-6">Anfrage per E-Mail, Telefon oder Telefax</h3>
+            <h3 className="text-xl font-semibold mb-3 mt-6">Anfrage per E-Mail oder Telefon</h3>
             <p className="mb-4">
-              Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus
-              hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns
-              gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+              Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden
+              personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und
+              verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
             </p>
             <p className="mb-4">
               Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der
               Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In
               allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung
               der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a
-              DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.
-            </p>
-            <p className="mb-4">
-              Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung
-              auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B.
-              nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche
-              Aufbewahrungsfristen – bleiben unberührt.
+              DSGVO), sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Kommunikation via WhatsApp</h3>
@@ -333,14 +326,7 @@ export default function Datenschutz() {
             <p className="mb-4">
               Die Kommunikation erfolgt über eine Ende-zu-Ende-Verschlüsselung (Peer-to-Peer), die verhindert, dass WhatsApp
               oder sonstige Dritte Zugriff auf die Kommunikationsinhalte erlangen können. WhatsApp erhält jedoch Zugriff auf
-              Metadaten, die im Zuge des Kommunikationsvorgangs entstehen (z. B. Absender, Empfänger und Zeitpunkt). Wir
-              weisen ferner darauf hin, dass WhatsApp nach eigener Aussage personenbezogene Daten seiner Nutzer mit seiner in
-              den USA ansässigen Konzernmutter Meta teilt. Weitere Details zur Datenverarbeitung finden Sie in der
-              Datenschutzrichtlinie von WhatsApp unter:{' '}
-              <a href="https://www.whatsapp.com/legal/#privacy-policy" target="_blank" rel="noreferrer">
-                https://www.whatsapp.com/legal/#privacy-policy
-              </a>
-              .
+              Metadaten, die im Zuge des Kommunikationsvorgangs entstehen (z. B. Absender, Empfänger und Zeitpunkt).
             </p>
             <p className="mb-4">
               Der Einsatz von WhatsApp erfolgt auf Grundlage unseres berechtigten Interesses an einer möglichst schnellen und
@@ -348,215 +334,88 @@ export default function Datenschutz() {
               lit. f DSGVO). Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Datenverarbeitung
               ausschließlich auf Grundlage der Einwilligung; diese ist jederzeit mit Wirkung für die Zukunft widerrufbar.
             </p>
+
+            <h2 className="text-2xl font-semibold mb-4 mt-8">
+              5. Cookies, Einwilligungen und eingesetzte Dienste
+            </h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-6">Cookies & Consent-Management</h3>
             <p className="mb-4">
-              Die zwischen Ihnen und uns auf WhatsApp ausgetauschten Kommunikationsinhalte verbleiben bei uns, bis Sie uns
-              zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung
-              entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen –
-              insbesondere Aufbewahrungsfristen – bleiben unberührt.
+              Unsere Website verwendet ein Consent-Management-Tool (Cookie-Banner), mit dem Ihre Einwilligungen in die
+              Speicherung bestimmter Cookies bzw. die Nutzung bestimmter Technologien eingeholt und verwaltet werden. Die
+              Nutzung dieses Tools erfolgt, um die gesetzlich vorgeschriebenen Einwilligungen nachweisen zu können und unsere
+              Cookie-Einstellungen transparent zu steuern (Art. 6 Abs. 1 lit. c und f DSGVO).
+            </p>
+            <p className="mb-4">
+              Je nach Auswahl im Cookie-Banner werden nur solche Cookies und Tools aktiviert, in die Sie eingewilligt haben.
+              Sie können Ihre Auswahl jederzeit über den Link „Cookie-Einstellungen“ am Seitenende anpassen und Einwilligungen
+              widerrufen oder erteilen.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-4 mt-8">5. Analyse-Tools und Werbung</h2>
+            <h2 className="text-2xl font-semibold mb-4 mt-8">6. Analyse-Tools und Werbung</h2>
 
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google Tag Manager</h3>
+            <h3 className="text-xl font-semibold mb-3 mt-6">Google Tag / Google Ads Conversion-Tracking</h3>
             <p className="mb-4">
-              Wir setzen den Google Tag Manager ein. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street,
-              Dublin 4, Irland.
+              Diese Website nutzt das Google-Tag-System bzw. das Global Site Tag (gtag.js) zur Einbindung von
+              Conversion-Tracking für Google Ads. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin
+              4, Irland.
             </p>
             <p className="mb-4">
-              Der Google Tag Manager ist ein Tool, mit dessen Hilfe wir Tracking- oder Statistik-Tools und andere
-              Technologien auf unserer Website einbinden können. Der Google Tag Manager selbst erstellt keine Nutzerprofile,
-              speichert keine Cookies und nimmt keine eigenständigen Analysen vor. Er dient lediglich der Verwaltung und
-              Ausspielung der über ihn eingebundenen Tools. Der Google Tag Manager erfasst jedoch Ihre IP-Adresse, die auch
-              an das Mutterunternehmen von Google in die Vereinigten Staaten übertragen werden kann.
+              Über das Google Tag können wir erfassen, welche Aktionen Nutzer nach einem Klick auf eine unserer Anzeigen
+              durchführen (z. B. Kontaktanfrage, Seitenaufrufe). Hierfür werden – je nach Ihrer Einwilligung im
+              Cookie-Banner – Informationen wie Ihre IP-Adresse, aufgerufene Seiten, verwendeter Browser sowie Uhrzeit der
+              Anfrage verarbeitet und in der Regel an Server von Google übertragen.
             </p>
             <p className="mb-4">
-              Der Einsatz des Google Tag Managers erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber
-              hat ein berechtigtes Interesse an einer schnellen und unkomplizierten Einbindung und Verwaltung verschiedener
-              Tools auf seiner Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung
-              ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die
-              Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting)
-              im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
-            </p>
-
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google Analytics</h3>
-            <p className="mb-4">
-              Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited
-              („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-            </p>
-            <p className="mb-4">
-              Google Analytics ermöglicht es dem Websitebetreiber, das Verhalten der Websitebesucher zu analysieren. Hierbei
-              erhält der Websitebetreiber verschiedene Nutzungsdaten, wie z. B. Seitenaufrufe, Verweildauer, verwendete
-              Betriebssysteme und Herkunft des Nutzers. Diese Daten werden dem jeweiligen Endgerät des Users zugeordnet. Eine
-              Zuordnung zu einer User-ID erfolgt nicht.
-            </p>
-            <p className="mb-4">
-              Des Weiteren können wir mit Google Analytics u. a. Ihre Maus- und Scrollbewegungen und Klicks aufzeichnen.
-              Ferner verwendet Google Analytics verschiedene Modellierungsansätze, um die erfassten Datensätze zu ergänzen und
-              setzt Machine-Learning-Technologien bei der Datenanalyse ein.
-            </p>
-            <p className="mb-4">
-              Google Analytics verwendet Technologien, die die Wiedererkennung des Nutzers zum Zwecke der Analyse des
-              Nutzerverhaltens ermöglichen (z. B. Cookies oder Device-Fingerprinting). Die von Google erfassten Informationen
-              über die Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort
-              gespeichert.
-            </p>
-            <p className="mb-4">
-              Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25
-              Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.
+              Die Nutzung des Google Tags und des Google Ads Conversion-Trackings erfolgt ausschließlich auf Grundlage Ihrer
+              Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit über die
+              Cookie-Einstellungen widerrufbar.
             </p>
             <p className="mb-4">
               Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details
-              finden Sie hier:{' '}
+              finden Sie in der Datenschutzerklärung von Google:{' '}
               <a
-                href="https://privacy.google.com/businesses/controllerterms/mccs/"
+                href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noreferrer"
               >
-                https://privacy.google.com/businesses/controllerterms/mccs/
+                https://policies.google.com/privacy
               </a>
               .
             </p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google Ads</h3>
+            <h2 className="text-2xl font-semibold mb-4 mt-8">7. Schriftarten & Icons</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-6">Schriftarten (Fonts)</h3>
             <p className="mb-4">
-              Der Websitebetreiber verwendet Google Ads. Google Ads ist ein Online-Werbeprogramm der Google Ireland Limited
-              („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
+              Für die Darstellung der Inhalte verwenden wir primär systemnahe Standardschriftarten (z. B. „system-ui“,
+              „-apple-system“, „Segoe UI“ oder vergleichbare Schriften). Diese sind bereits auf Ihrem Endgerät installiert,
+              sodass hierfür keine Verbindung zu externen Schriftservern aufgebaut werden muss.
             </p>
             <p className="mb-4">
-              Google Ads ermöglicht es uns, Werbeanzeigen in der Google-Suchmaschine oder auf Drittwebseiten auszuspielen,
-              wenn der Nutzer bestimmte Suchbegriffe bei Google eingibt (Keyword-Targeting). Ferner können zielgerichtete
-              Werbeanzeigen anhand der bei Google vorhandenen Nutzerdaten (z. B. Standortdaten und Interessen) ausgespielt
-              werden (Zielgruppen-Targeting). Wir als Websitebetreiber können diese Daten quantitativ auswerten, indem wir
-              beispielsweise analysieren, welche Suchbegriffe zur Ausspielung unserer Werbeanzeigen geführt haben und wie
-              viele Anzeigen zu entsprechenden Klicks geführt haben.
-            </p>
-            <p className="mb-4">
-              Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25
-              Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.
-            </p>
-            <p className="mb-4">
-              Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details
-              finden Sie hier:{' '}
-              <a
-                href="https://policies.google.com/privacy/frameworks"
-                target="_blank"
-                rel="noreferrer"
-              >
-                https://policies.google.com/privacy/frameworks
-              </a>{' '}
-              und{' '}
-              <a
-                href="https://business.safety.google/controllerterms/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                https://business.safety.google/controllerterms/
-              </a>
-              .
+              Sofern wir zusätzliche Webfonts einsetzen (z. B. zur Darstellung spezieller Schriftschnitte), werden diese
+              entweder lokal auf unserem Server bereitgestellt oder – sofern ausnahmsweise über externe Anbieter geladen –
+              ausschließlich nach Ihrer vorherigen Einwilligung über das Cookie-Banner aktiviert. In diesem Fall können
+              insbesondere Ihre IP-Adresse und technische Informationen (Browser, Betriebssystem, Seitenaufrufe) an den
+              jeweiligen Anbieter übermittelt werden.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-4 mt-8">6. Plugins und Tools</h2>
-
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google Fonts (lokales Hosting)</h3>
+            <h3 className="text-xl font-semibold mb-3 mt-6">Icon-Bibliotheken (z. B. Font Awesome, Remix Icons)</h3>
             <p className="mb-4">
-              Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google
-              bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet
-              dabei nicht statt.
+              Zur Darstellung von Symbolen können Icon-Bibliotheken wie z. B. Font Awesome oder Remix Icons eingesetzt
+              werden. Soweit diese über ein Content Delivery Network (CDN) eingebunden werden, erfolgt der Abruf der
+              entsprechenden Dateien – je nach Konfiguration – ausschließlich nach Ihrer Einwilligung im Cookie-Banner. In
+              diesem Fall kann Ihre IP-Adresse an den CDN-Betreiber übertragen werden.
             </p>
             <p className="mb-4">
-              Weitere Informationen zu Google Fonts finden Sie unter{' '}
-              <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noreferrer">
-                https://developers.google.com/fonts/faq
-              </a>{' '}
-              und in der Datenschutzerklärung von Google:{' '}
-              <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">
-                https://policies.google.com/privacy?hl=de
-              </a>
-              .
-            </p>
-
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google Maps</h3>
-            <p className="mb-4">
-              Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon
-              House, Barrow Street, Dublin 4, Irland. Mit Hilfe dieses Dienstes können wir Kartenmaterial auf unserer Website
-              einbinden.
-            </p>
-            <p className="mb-4">
-              Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen
-              werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser
-              Seite hat keinen Einfluss auf diese Datenübertragung. Wenn Google Maps aktiviert ist, kann Google zum Zwecke der
-              einheitlichen Darstellung der Schriftarten Google Fonts verwenden. Beim Aufruf von Google Maps lädt Ihr Browser
-              die benötigten Web Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen.
-            </p>
-            <p className="mb-4">
-              Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an
-              einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes
-              Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde,
-              erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG,
-              soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers
-              (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
-            </p>
-            <p className="mb-4">
-              Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details
-              finden Sie hier:{' '}
-              <a
-                href="https://privacy.google.com/businesses/gdprcontrollerterms/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                https://privacy.google.com/businesses/gdprcontrollerterms/
-              </a>{' '}
-              und{' '}
-              <a
-                href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                https://privacy.google.com/businesses/gdprcontrollerterms/sccs/
-              </a>
-              .
-            </p>
-
-            <h3 className="text-xl font-semibold mb-3 mt-6">Google reCAPTCHA</h3>
-            <p className="mb-4">
-              Wir nutzen „Google reCAPTCHA“ (im Folgenden „reCAPTCHA“) auf dieser Website. Anbieter ist die Google Ireland
-              Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-            </p>
-            <p className="mb-4">
-              Mit reCAPTCHA soll überprüft werden, ob die Dateneingabe auf dieser Website (z. B. in einem Kontaktformular)
-              durch einen Menschen oder durch ein automatisiertes Programm erfolgt. Hierzu analysiert reCAPTCHA das Verhalten
-              des Websitebesuchers anhand verschiedener Merkmale. Diese Analyse beginnt automatisch, sobald der Websitebesucher
-              die Website betritt. Zur Analyse wertet reCAPTCHA verschiedene Informationen aus (z. B. IP-Adresse, Verweildauer
-              des Websitebesuchers auf der Website oder vom Nutzer getätigte Mausbewegungen). Die bei der Analyse erfassten
-              Daten werden an Google weitergeleitet.
-            </p>
-            <p className="mb-4">
-              Die reCAPTCHA-Analysen laufen vollständig im Hintergrund. Websitebesucher werden nicht darauf hingewiesen, dass
-              eine Analyse stattfindet.
-            </p>
-            <p className="mb-4">
-              Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber
-              hat ein berechtigtes Interesse daran, seine Webangebote vor missbräuchlicher automatisierter Ausspähung und vor
-              SPAM zu schützen. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich
-              auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von
-              Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des
-              TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
-            </p>
-            <p className="mb-4">
-              Weitere Informationen zu Google reCAPTCHA entnehmen Sie den Google-Datenschutzbestimmungen und den Google
-              Nutzungsbedingungen unter folgenden Links:{' '}
-              <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">
-                https://policies.google.com/privacy?hl=de
-              </a>{' '}
-              und{' '}
-              <a href="https://policies.google.com/terms?hl=de" target="_blank" rel="noreferrer">
-                https://policies.google.com/terms?hl=de
-              </a>
-              .
+              Die Nutzung solcher Icon-Bibliotheken erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+              Interesse an einer konsistenten und technisch sauberen Darstellung der Website) bzw. auf Grundlage Ihrer
+              Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, sofern eine Einwilligung abgefragt wurde.
+              Eine erteilte Einwilligung können Sie jederzeit über die Cookie-Einstellungen widerrufen.
             </p>
 
             <div className="mt-12 pt-8 border-t border-[rgba(15,23,42,0.14)] dark:border-white/10">
-              <p className="text-sm opacity-70 text-[color:var(--page-fg)]">Stand: Dezember 2024</p>
+              <p className="text-sm opacity-70 text-[color:var(--page-fg)]">Stand: Dezember 2025</p>
             </div>
           </div>
         </div>
