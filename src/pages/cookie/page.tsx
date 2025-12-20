@@ -24,11 +24,13 @@ export default function CookieSettingsPage() {
             </h1>
 
             <p className="mt-2 text-base leading-relaxed text-[color:var(--page-fg)]/80">
-              Technisch notwendige Cookies sind erforderlich, um die Webseite sicher und zuverlässig zu betreiben.
+              Technisch notwendige Cookies sind erforderlich, damit diese Webseite sicher und zuverlässig funktioniert und deine
+              Auswahl zu den Cookie-Einstellungen gespeichert werden kann.
             </p>
             <p className="mt-2 text-base leading-relaxed text-[color:var(--page-fg)]/80">
-              Statistik- und Marketing-Cookies setzen wir nur nach deiner Einwilligung. Deine Auswahl kannst du hier jederzeit
-              anpassen und mit dem Cookie-Banner erneut öffnen.
+              Statistik- und Marketing-Cookies (z.&nbsp;B. für Google Ads) sowie externe Ressourcen wie Icon-Bibliotheken laden wir
+              erst, wenn du im Cookie-Banner zugestimmt hast. Deine Auswahl kannst du hier jederzeit anpassen und den Banner erneut
+              öffnen.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -59,8 +61,9 @@ export default function CookieSettingsPage() {
               Cookie-Kategorien
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[color:var(--page-fg)]/75">
-              Wir unterscheiden zwischen technisch notwendigen Cookies, optionalen Statistik-Cookies und optionalen Marketing-Cookies.
-              Welche Gruppen aktiv sind, hängt von deiner Auswahl im Cookie-Banner ab.
+              Wir unterscheiden zwischen technisch notwendigen Cookies, optionalen Statistik-Cookies und optionalen
+              Marketing-/Tracking-Cookies. Welche Gruppen aktiv sind und ob externe Dienste (z.&nbsp;B. Google Ads oder Icon-Fonts)
+              geladen werden, hängt von deiner Auswahl im Cookie-Banner ab.
             </p>
 
             <div className="mt-8 grid gap-4">
@@ -69,7 +72,7 @@ export default function CookieSettingsPage() {
                   Notwendig
                 </div>
                 <div className="mt-1 text-sm text-[color:var(--page-fg)]/80">
-                  Speicherung deiner Auswahl und Grundfunktionen.
+                  Speicherung deiner Cookie-Auswahl, Auslieferung der Webseite, Sicherheit und grundlegende Funktionen dieser Seite.
                 </div>
               </div>
 
@@ -78,7 +81,8 @@ export default function CookieSettingsPage() {
                   Statistik
                 </div>
                 <div className="mt-1 text-sm text-[color:var(--page-fg)]/80">
-                  Reichweitenmessung und Performance (nur nach Zustimmung).
+                  Reichweitenmessung und Performance-Auswertung der Webseite (nur nach Zustimmung). Aktuell werden keine
+                  Statistik-Tools ohne deine Einwilligung gesetzt.
                 </div>
               </div>
 
@@ -87,15 +91,30 @@ export default function CookieSettingsPage() {
                   Marketing
                 </div>
                 <div className="mt-1 text-sm text-[color:var(--page-fg)]/80">
-                  Anzeigenmessung und Remarketing (nur nach Zustimmung).
+                  Marketing- und Conversion-Tracking, z.&nbsp;B. über Google Ads (nur nach Zustimmung). Außerdem werden erst nach
+                  Einwilligung externe Ressourcen wie Icon-Bibliotheken (Remix Icons, Font Awesome) nachgeladen.
                 </div>
               </div>
             </div>
 
+            <h2 className="mt-10 text-lg md:text-xl font-semibold text-[color:var(--page-fg)]">
+              Eingesetzte Dienste
+            </h2>
+            <ul className="mt-3 space-y-2 text-sm text-[color:var(--page-fg)]/80 list-disc list-inside">
+              <li>
+                <span className="font-semibold">Google Ads (Conversion-Tracking)</span> – Anbieter: Google Ireland Limited.
+                Dient zur Messung der Wirksamkeit von Online-Werbung. Wird nur geladen, wenn du im Cookie-Banner zustimmst.
+              </li>
+              <li>
+                <span className="font-semibold">Icon-Bibliotheken (Remix Icons, Font Awesome)</span> – werden zur Darstellung von
+                Symbolen genutzt und erst nach deiner Einwilligung vom jeweiligen CDN geladen.
+              </li>
+            </ul>
+
             <p className="mt-8 text-sm text-[color:var(--page-fg)]/70">
-              Technische Info: Wenn sich das Banner beim Klick nicht öffnet, muss die CookieBanner-Komponente das Event
-              <span className="mx-1 px-2 py-0.5 rounded-lg bg-black/10">cookie-banner:open</span>
-              auswerten und entsprechend reagieren.
+              Technische Info (für Admins/Technik): Das Cookie-Banner lässt sich von hier aus über das Event
+              <span className="mx-1 px-2 py-0.5 rounded-lg bg-black/10">cookie-banner:open</span> erneut öffnen, sofern die
+              CookieBanner-Komponente dieses Event auswertet.
             </p>
             <div className="mt-6 pt-4 border-t border-[rgba(15,23,42,0.14)] dark:border-white/10">
               <p className="text-xs opacity-70 text-[color:var(--page-fg)]">Stand: Dezember 2025</p>
