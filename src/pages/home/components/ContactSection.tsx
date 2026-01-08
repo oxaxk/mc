@@ -126,8 +126,8 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">E-Mail (optional)</label>
-                <input type="email" className={fieldClass} name="email" />
+                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">E-Mail*</label>
+                <input type="email" required className={fieldClass} name="email" />
               </div>
 
               <div>
@@ -149,8 +149,9 @@ export default function ContactSection() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Nachricht</label>
+                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Nachricht*</label>
                 <textarea
+                  required
                   rows={4}
                   className={fieldClass}
                   placeholder="z. B. Objektart, Größe, Reinigungsumfang, gewünschte Intervalle, Adresse und Telefonnummer"
