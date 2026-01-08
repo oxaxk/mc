@@ -17,6 +17,10 @@ const RATE = new Map<string, number[]>();
 const WINDOW_MS = 60_000;
 const MAX_PER_WINDOW = 8;
 
+function jsonError(res: VercelResponse, status: number, code: string, message: string) {
+  return res.status(status).json({ ok: false, error: code, message });
+}
+
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -48,10 +52,10 @@ function getClientIp(req: VercelRequest) {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'METHOD_NOT_ALLOWED' });
+  if (req.method !== 'POST') return jsonError(res, 405, 'METHOD_NOT_ALLOWED', 'Nur POST ist erlaubt.');
 
   if (!req.headers['content-type']?.includes('application/json')) {
-    return res.status(400).json({ ok: false, error: 'INVALID_CONTENT_TYPE' });
+    return jsonError(res, 400, 'INVALID_CONTENT_TYPE', 'Ungültiger Inhalt. Bitte sende JSON (application/json).');
   }
 
   const body: Body = (req.body || {}) as Body;
@@ -67,14 +71,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const bucket = (RATE.get(ip) || []).filter((t) => now - t < WINDOW_MS);
   if (bucket.length >= MAX_PER_WINDOW) {
     RATE.set(ip, bucket);
-    return res.status(429).json({ ok: false, error: 'RATE_LIMIT' });
+    return jsonError(res, 429, 'RATE_LIMIT', 'Zu viele Anfragen. Bitte warte kurz und versuche es erneut.');
   }
   bucket.push(now);
   RATE.set(ip, bucket);
 
   // Optional consent gate: only enforce if the field exists in the payload
   if (typeof body.consent === 'boolean' && body.consent !== true) {
-    return res.status(400).json({ ok: false, error: 'CONSENT_REQUIRED' });
+    return jsonError(res, 400, 'CONSENT_REQUIRED', 'Bitte bestätige die Einwilligung, um das Formular zu senden.');
   }
 
   const nameRaw = typeof body.name === 'string' ? body.name : '';
@@ -89,9 +93,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const date = clampText(dateRaw, 120);
   const message = clampText(messageRaw, 5000);
 
-  if (!name || name.length < 2) return res.status(400).json({ ok: false, error: 'INVALID_NAME' });
-  if (!email || !isEmail(email)) return res.status(400).json({ ok: false, error: 'INVALID_EMAIL' });
-  if (!message || message.length < 10) return res.status(400).json({ ok: false, error: 'INVALID_MESSAGE' });
+  if (!name || name.length < 2) return jsonError(res, 400, 'INVALID_NAME', 'Bitte gib deinen Namen ein.');
+  if (!email) return jsonError(res, 400, 'INVALID_EMAIL', 'Bitte gib deine E-Mail-Adresse ein.');
+  if (!isEmail(email)) return jsonError(res, 400, 'INVALID_EMAIL', 'Bitte gib eine gültige E-Mail-Adresse ein.');
+  // Allow short messages like "hey" (min 2 chars)
+  if (!message || message.length < 2) return jsonError(res, 400, 'INVALID_MESSAGE', 'Bitte gib eine Nachricht ein.');
 
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT || 587);
@@ -101,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const secure = process.env.SMTP_SECURE === 'true';
 
   if (!host || !user || !pass || !recipient) {
-    return res.status(500).json({ ok: false, error: 'SMTP_NOT_CONFIGURED' });
+    return jsonError(res, 500, 'SMTP_NOT_CONFIGURED', 'E-Mail-Versand ist nicht konfiguriert. Bitte später erneut versuchen.');
   }
 
   const safeName = escapeHtml(name);
@@ -184,6 +190,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       port,
       secure,
     });
-    return res.status(500).json({ ok: false, error: 'MAIL_FAILED' });
+    return jsonError(res, 500, 'MAIL_FAILED', 'E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.');
   }
 }
