@@ -38,13 +38,7 @@ export default function Datenschutz() {
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">4. Cookies und Tracking</h2>
             <p className="mb-4">
-              Diese Website setzt ausschließlich technisch notwendige Cookies ein.
-            </p>
-            <p className="mb-4">
-              Bestimmte Darstellungs- und Komfortfunktionen (z. B. Icons oder UI-Komponenten aus externen Bibliotheken) werden erst nach Ihrer ausdrücklichen Zustimmung über den Cookie-Hinweis geladen.
-            </p>
-            <p className="mb-4">
-              Es findet kein Tracking statt. Es werden keine Analyse-, Marketing- oder Werbedienste (z. B. Google Analytics, Google Ads, Meta Pixel) eingesetzt.
+              Diese Website verwendet keine Cookies und keine Tracking‑Technologien. Es werden weder Analyse‑ noch Marketingdienste eingesetzt. Beim Besuch der Website werden lediglich technisch notwendige Server‑Logfiles durch den Hosting‑Anbieter verarbeitet, um den sicheren Betrieb der Website zu gewährleisten.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">5. Ihre Rechte</h2>
