@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -24,10 +24,6 @@ export default function Footer() {
     window.setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 0);
   };
 
-  const openCookieSettings = () => {
-    window.dispatchEvent(new Event('open-cookie-banner'));
-    window.setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 0);
-  };
 
   return (
     <footer className="py-14 bg-white/80 backdrop-blur-xl border-t border-black/10 text-[#111827]">
@@ -113,9 +109,6 @@ export default function Footer() {
             </button>
             <button type="button" onClick={() => goToPageTop('/datenschutz')} className="text-[#111827]/60 hover:text-[#111827] transition-colors">
               Datenschutz
-            </button>
-            <button type="button" onClick={openCookieSettings} className="text-[#111827]/60 hover:text-[#111827] transition-colors">
-              Cookie-Einstellungen
             </button>
           </div>
         </div>
