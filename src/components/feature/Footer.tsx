@@ -100,9 +100,17 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#111827]/60 text-xs md:text-sm text-center md:text-left">
-            © 2025 myclean. Alle Rechte vorbehalten.
-          </p>
+          <div className="text-[#111827]/60 text-xs md:text-sm text-center md:text-left flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
+            <span>© 2025 myclean. Alle Rechte vorbehalten.</span>
+            <a
+              href="https://slicker.agency"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#111827]/60 hover:text-[#111827] transition-colors"
+            >
+              by Slicker
+            </a>
+          </div>
           <div className="flex space-x-6 mt-2 md:mt-0 justify-center md:justify-end text-xs md:text-sm">
             <button type="button" onClick={() => goToPageTop('/impressum')} className="text-[#111827]/60 hover:text-[#111827] transition-colors">
               Impressum
