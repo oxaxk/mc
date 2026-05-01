@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function Footer() {
               className="mb-4 flex items-center gap-3 justify-center md:justify-start"
             >
               <img
-                src="/images/logo.png"
+                src="/images/logo-192.webp"
                 alt="myclean Logo"
                 className="h-20 md:h-28 w-auto"
               />
@@ -50,22 +51,24 @@ export default function Footer() {
             <div className="flex space-x-4 justify-center md:justify-start">
               <a
                 href="tel:+4915217782301"
+                aria-label="myclean telefonisch kontaktieren"
                 className="w-11 h-11 rounded-full flex items-center justify-center bg-black/5 backdrop-blur-xl border border-black/20 shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:bg-black/10 hover:border-black/40 transition-colors"
               >
-                <i className="ri-phone-line text-[#111827] text-lg" />
+                <Phone className="h-5 w-5 text-[#111827]" aria-hidden="true" />
               </a>
               <a
                 href="mailto:info@myclean-service.de"
+                aria-label="myclean per E-Mail kontaktieren"
                 className="w-11 h-11 rounded-full flex items-center justify-center bg-black/5 backdrop-blur-xl border border-black/20 shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:bg-black/10 hover:border-black/40 transition-colors"
               >
-                <i className="ri-mail-line text-[#111827] text-lg" />
+                <Mail className="h-5 w-5 text-[#111827]" aria-hidden="true" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="flex flex-col items-center md:items-start">
-            <h4
+            <h2
               className="font-semibold text-xl md:text-2xl mb-4"
               style={{
                 color: '#111827',
@@ -73,7 +76,7 @@ export default function Footer() {
               }}
             >
               Schnellzugriff
-            </h4>
+            </h2>
             <ul className="space-y-2 text-sm md:text-base">
               <li>
                 <button type="button" onClick={() => goToSection('#hero')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">

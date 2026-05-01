@@ -6,7 +6,7 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   target?: string;
@@ -48,14 +48,14 @@ export default function Button({
   if (href) {
     if (isInternal) {
       return (
-        <Link to={href} className={classes}>
+        <Link to={href} className={classes} onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}>
           {children}
         </Link>
       );
     }
 
     return (
-      <a href={href} className={classes} target={target} rel={rel}>
+      <a href={href} className={classes} target={target} rel={rel} onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}>
         {children}
       </a>
     );

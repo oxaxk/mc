@@ -2,13 +2,22 @@
 import React from 'react';
 import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
 
-import NotFound from '../pages/NotFound';
 import Home from '../pages/home/page';
-import Datenschutz from '../pages/datenschutz/page';
-import Impressum from '../pages/impressum/page';
-import CookieSettingsPage from '../pages/cookie/page';
 
 import CookieBanner from '../components/feature/CookieBanner';
+
+const NotFound = React.lazy(() => import('../pages/NotFound'));
+const Datenschutz = React.lazy(() => import('../pages/datenschutz/page'));
+const Impressum = React.lazy(() => import('../pages/impressum/page'));
+const CookieSettingsPage = React.lazy(() => import('../pages/cookie/page'));
+
+function LazyPage({ children }: { children: React.ReactNode }) {
+  return (
+    <React.Suspense fallback={<div className="min-h-screen bg-[var(--page-bg)]" />}>
+      {children}
+    </React.Suspense>
+  );
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -38,10 +47,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'home', element: <Home /> },
-      { path: 'cookie', element: <CookieSettingsPage /> },
-      { path: 'datenschutz', element: <Datenschutz /> },
-      { path: 'impressum', element: <Impressum /> },
-      { path: '*', element: <NotFound /> }
+      { path: 'cookie', element: <LazyPage><CookieSettingsPage /></LazyPage> },
+      { path: 'datenschutz', element: <LazyPage><Datenschutz /></LazyPage> },
+      { path: 'impressum', element: <LazyPage><Impressum /></LazyPage> },
+      { path: '*', element: <LazyPage><NotFound /></LazyPage> }
     ]
   }
 ]);

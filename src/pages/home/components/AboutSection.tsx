@@ -11,12 +11,12 @@ export default function AboutSection() {
               Über myclean
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-[color:var(--page-fg)]">
-              Ihr Reinigungsservice für Berlin &amp; Umgebung
+              Saubere Flächen ohne Nachtelefonieren
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-[color:var(--page-fg)]/80 max-w-xl">
-              myclean ist ein spezialisierter Reinigungsservice aus Berlin. Wir kümmern uns um die
-              regelmäßige Unterhaltsreinigung, Büro- und Praxisreinigung, Treppenhausreinigung sowie
-              Glas- und Sonderreinigung – zuverlässig, gründlich und mit klaren Absprachen.
+              myclean ist auf laufende Reinigung für Berliner Unternehmen, Praxen und Hausverwaltungen spezialisiert.
+              Sie bekommen einen festen Ablauf, klare Zuständigkeiten und regelmäßige Qualitätskontrollen, damit
+              Reinigung nicht zur wiederkehrenden Baustelle wird.
             </p>
           </div>
 
@@ -28,8 +28,8 @@ export default function AboutSection() {
                 Zuverlässige Unterhaltsreinigung
               </h3>
               <p className="text-sm md:text-base leading-relaxed text-[color:var(--page-fg)]/80">
-                Regelmäßige Reinigung von Büros, Praxen und Treppenhäusern nach festen Intervallen –
-                damit deine Flächen dauerhaft sauber, gepflegt und repräsentativ bleiben.
+                Regelmäßige Reinigung von Büros, Praxen und Treppenhäusern nach festen Intervallen,
+                damit Ihre Flächen dauerhaft sauber, gepflegt und repräsentativ bleiben.
               </p>
             </div>
 
@@ -50,8 +50,8 @@ export default function AboutSection() {
                 Transparent &amp; planbar
               </h3>
               <p className="text-sm md:text-base leading-relaxed text-[color:var(--page-fg)]/80">
-                Klare Angebote, feste Intervalle und transparente Konditionen – ohne versteckte Kosten.
-                Auf Wunsch mit detaillierter Aufstellung für Verwaltung, Verwaltung oder Steuerbüro.
+                Klare Angebote, feste Intervalle und transparente Konditionen. Auf Wunsch mit detaillierter
+                Aufstellung für Geschäftsführung, Verwaltung oder Steuerbüro.
               </p>
             </div>
           </div>

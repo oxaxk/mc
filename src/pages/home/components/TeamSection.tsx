@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { Phone } from 'lucide-react';
 import Button from '../../../components/base/Button';
 
 const socialImages = [
   {
-    src: '/images/projects/11.png',
+    src: '/images/projects/11-820.webp',
     alt: 'myclean – Büroreinigung in modernen Räumen in Berlin'
   },
   {
-    src: '/images/projects/12.png',
+    src: '/images/projects/12-820.webp',
     alt: 'myclean – Treppenhausreinigung in einem Mehrfamilienhaus in Berlin'
   },
   {
-    src: '/images/projects/13.png',
+    src: '/images/projects/13-820.webp',
     alt: 'myclean – Glas- und Fensterreinigung in einem Bürogebäude in Berlin'
   }
 ];
@@ -59,6 +60,7 @@ const TeamSection = () => {
                         src={image.src}
                         alt={image.alt}
                         loading="lazy"
+                        decoding="async"
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
                           index === activeIndex ? 'opacity-100' : 'opacity-0'
                         }`}
@@ -77,6 +79,7 @@ const TeamSection = () => {
                           alt={image.alt}
                           className="w-full h-64 object-cover"
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>
@@ -90,7 +93,7 @@ const TeamSection = () => {
                   size="md"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3 text-[0.75rem] sm:text-sm md:text-base tracking-[0.22em] uppercase rounded-full bg-[color:var(--accent-solid)] text-white border border-[rgba(var(--accent),0.55)] shadow-[0_18px_40px_rgba(15,23,42,0.18)] hover:shadow-[0_22px_55px_rgba(15,23,42,0.22)] hover:brightness-105"
                 >
-                  <i className="ri-phone-line w-5 h-5" />
+                  <Phone className="h-5 w-5" aria-hidden="true" />
                   Direkt anrufen
                 </Button>
               </div>

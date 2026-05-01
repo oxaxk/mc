@@ -1,3 +1,5 @@
+import { FileText, MessageSquareText, RefreshCw, Sparkles } from 'lucide-react';
+
 export default function ProcessSection() {
   const steps = [
     {
@@ -5,28 +7,28 @@ export default function ProcessSection() {
       title: 'Anfrage & Kurzbeschreibung',
       description:
         'Sie melden sich per Telefon, E-Mail oder Kontaktformular und schildern kurz, um welche Fläche es geht – z. B. Büro, Praxis, Treppenhaus oder Objekt.',
-      icon: 'ri-chat-3-line'
+      icon: MessageSquareText
     },
     {
       number: '02',
       title: 'Besichtigung & Angebot',
       description:
         'Wir verschaffen uns einen Überblick vor Ort oder digital, besprechen Reinigungsumfang, Intervalle und besondere Anforderungen und erstellen ein transparentes Angebot.',
-      icon: 'ri-file-list-3-line'
+      icon: FileText
     },
     {
       number: '03',
       title: 'Start der Reinigung',
       description:
         'Nach Freigabe planen wir feste Touren, definieren Zuständigkeiten und starten die regelmäßige Reinigung – abgestimmt auf Ihre Öffnungs- und Nutzungszeiten.',
-      icon: 'ri-sparkling-2-line'
+      icon: Sparkles
     },
     {
       number: '04',
       title: 'Laufende Betreuung',
       description:
         'Wir bleiben Ihr fester Ansprechpartner, passen Intervalle bei Bedarf an und sorgen durch regelmäßige Kontrollen dafür, dass die Qualität langfristig stimmt.',
-      icon: 'ri-refresh-line'
+      icon: RefreshCw
     }
   ];
 
@@ -56,12 +58,14 @@ export default function ProcessSection() {
           <div className="hidden lg:block absolute top-1/2 left-[2%] right-[2%] h-px bg-[rgba(var(--accent),0.22)]" />
 
           <div className="relative z-10 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, index) => (
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
               <div key={step.number} className="group flex flex-col items-stretch text-left">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="relative">
                     <div className="w-11 h-11 rounded-2xl bg-[color:var(--accent-solid)] border border-[rgba(var(--accent),0.55)] flex items-center justify-center shadow-[0_16px_40px_rgba(15,23,42,0.18)]">
-                      <i className={`${step.icon} text-lg text-[#F9FAFB]`} />
+                      <Icon className="h-5 w-5 text-[#F9FAFB]" aria-hidden="true" />
                     </div>
                     <span
                       className="absolute -bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--page-bg)] border border-[rgba(var(--accent),0.55)] text-[0.65rem] font-semibold tracking-[0.18em] uppercase text-[color:var(--page-fg)]"
@@ -83,7 +87,8 @@ export default function ProcessSection() {
                   <div className="lg:hidden mt-6 w-px h-10 bg-[rgba(var(--accent),0.28)]" />
                 )}
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </div>

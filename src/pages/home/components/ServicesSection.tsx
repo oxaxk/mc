@@ -1,4 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
+import {
+  ArrowDownUp,
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardPen,
+  Home,
+  Hospital,
+  Phone,
+  Sparkles,
+  SquareStack,
+} from 'lucide-react';
 import Button from '../../../components/base/Button';
 
 export default function ServicesSection() {
@@ -12,46 +24,46 @@ export default function ServicesSection() {
 
   const services = [
     {
-      icon: 'ri-home-4-line',
+      icon: Home,
       title: 'Unterhaltsreinigung',
       description:
         'Regelmäßige Reinigung von Büros, Praxen und gewerblichen Flächen – nach festen Intervallen und klar definierten Leistungsumfängen.',
-      image: '/images/services/5.png'
+      image: '/images/services/5-720.webp'
     },
     {
-      icon: 'ri-building-4-line',
+      icon: Building2,
       title: 'Büro- & Praxisreinigung',
       description:
         'Gründliche Reinigung von Arbeitsplätzen, Besprechungsräumen, Sanitärbereichen und Empfangszonen – auch außerhalb Ihrer Öffnungszeiten.',
-      image: '/images/services/6.png'
+      image: '/images/services/6-720.webp'
     },
     {
-      icon: 'ri-arrow-up-down-line',
+      icon: ArrowDownUp,
       title: 'Treppenhausreinigung',
       description:
         'Saubere Treppenhäuser, Eingangsbereiche und Flure in Mietshäusern und Wohnanlagen – inklusive Geländer, Aufzüge und Briefkastenanlagen.',
-      image: '/images/services/7.png'
+      image: '/images/services/7-720.webp'
     },
     {
-      icon: 'ri-window-2-line',
+      icon: SquareStack,
       title: 'Glas- & Fensterreinigung',
       description:
         'Streifenfreie Glas- und Rahmenreinigung für Büros, Eingangsbereiche und Auslagen – auf Wunsch in regelmäßigen Intervallen.',
-      image: '/images/services/8.png'
+      image: '/images/services/8-720.webp'
     },
     {
-      icon: 'ri-hospital-line',
+      icon: Hospital,
       title: 'Sensible Bereiche',
       description:
         'Reinigung von Praxen, Studios und sensiblen Bereichen mit klaren Hygiene-Routinen und abgestimmten Reinigungsplänen.',
-      image: '/images/services/9.png'
+      image: '/images/services/9-720.webp'
     },
     {
-      icon: 'ri-sparkling-2-line',
+      icon: Sparkles,
       title: 'Sonderreinigung',
       description:
         'Grundreinigung, Bauendreinigung oder einmalige Intensivreinigung – wenn Flächen einen extra gründlichen Reinigungsdurchgang brauchen.',
-      image: '/images/services/10.png'
+      image: '/images/services/10-720.webp'
     }
   ];
 
@@ -246,7 +258,9 @@ export default function ServicesSection() {
               onTouchEnd={handleTouchEnd}
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
-              {services.map((svc) => (
+              {services.map((svc) => {
+                const Icon = svc.icon;
+                return (
                 <div key={svc.title} data-slide className="shrink-0 w-[88%] sm:w-[78%] md:w-[44%] lg:w-[34%] snap-center">
                   <div className="bg-[var(--card-glass)] border border-[rgba(15,23,42,0.14)] dark:border-white/10 rounded-[1.9rem] overflow-hidden shadow-[0_22px_70px_rgba(15,23,42,0.16)] transition-all duration-200 h-[520px] sm:h-[500px] md:h-[460px] lg:h-[480px] flex flex-col md:hover:border-[#22d3ee]/40 md:hover:shadow-[0_30px_90px_rgba(34,211,238,0.18)]">
                     <div className="relative h-[54%] overflow-hidden">
@@ -262,7 +276,7 @@ export default function ServicesSection() {
                     <div className="px-6 pt-5 pb-6 md:pb-5 flex flex-col justify-start h-[40%]">
                       <div className="flex items-center gap-3">
                         <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(var(--accent),0.16)] border border-[rgba(var(--accent),0.35)]">
-                          <i className={`${svc.icon} text-xl text-[color:var(--accent-solid)]`} />
+                          <Icon className="h-5 w-5 text-[color:var(--accent-solid)]" aria-hidden="true" />
                         </span>
                         <h3 className="text-sm md:text-base lg:text-lg font-semibold tracking-[0.16em] uppercase text-[color:var(--page-fg)]">
                           {svc.title}
@@ -276,7 +290,8 @@ export default function ServicesSection() {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
           </div>
 
@@ -285,32 +300,41 @@ export default function ServicesSection() {
           <div className="flex flex-col items-center justify-center mt-8 lg:mt-12 gap-4">
             <div className="flex items-center gap-4">
               <button
+                type="button"
                 onClick={prevSlide}
                 disabled={isTransitioning}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
+                aria-label="Vorherige Leistung anzeigen"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
               >
-                <i className="ri-arrow-left-s-line text-lg text-[color:var(--page-fg)]" />
+                <ChevronLeft className="h-5 w-5 text-[color:var(--page-fg)]" aria-hidden="true" />
               </button>
 
               <div className="flex items-center gap-2">
                 {services.map((_, index) => (
                   <button
                     key={index}
+                    type="button"
                     onClick={() => goToSlide(index)}
                     disabled={isTransitioning}
-                    className={`h-2.5 rounded-full bg-[color:var(--accent-solid)] transition-all duration-300 cursor-pointer disabled:opacity-50 ${
-                      currentIndex === index ? 'w-7 opacity-100' : 'w-2.5 opacity-40'
+                    aria-label={`Leistung ${index + 1} anzeigen`}
+                    aria-current={currentIndex === index}
+                    className={`h-11 rounded-full bg-[color:var(--accent-solid)] transition-all duration-300 cursor-pointer disabled:opacity-50 ${
+                      currentIndex === index ? 'w-11 opacity-100' : 'w-11 opacity-40'
                     }`}
-                  />
+                  >
+                    <span className="sr-only">Leistung {index + 1}</span>
+                  </button>
                 ))}
               </div>
 
               <button
+                type="button"
                 onClick={nextSlide}
                 disabled={isTransitioning}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
+                aria-label="Nächste Leistung anzeigen"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
               >
-                <i className="ri-arrow-right-s-line text-lg text-[color:var(--page-fg)]" />
+                <ChevronRight className="h-5 w-5 text-[color:var(--page-fg)]" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -323,15 +347,15 @@ export default function ServicesSection() {
             size="lg"
             className="w-full sm:w-[15.5rem] justify-center gap-2 text-[0.75rem] sm:text-sm md:text-base px-7 py-3.5 tracking-[0.22em] uppercase"
           >
-            <i className="ri-edit-line text-2xl" />
-            Angebot anfragen
+            <ClipboardPen className="h-5 w-5" aria-hidden="true" />
+            Kostenlose Besichtigung
           </Button>
           <Button
             href="tel:+4915217782301"
             size="lg"
             className="w-full sm:w-[15.5rem] justify-center gap-2 text-[0.75rem] sm:text-sm md:text-base px-7 py-3.5 tracking-[0.22em] uppercase"
           >
-            <i className="ri-phone-line text-2xl" />
+            <Phone className="h-5 w-5" aria-hidden="true" />
             Jetzt anrufen
           </Button>
         </div>

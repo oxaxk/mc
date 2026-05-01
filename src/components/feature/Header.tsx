@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { CircleHelp, Menu, Phone, X } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollYRef = useRef(0);
 
   const handleEmailClick = () => {
     if (typeof window === 'undefined') return;
@@ -16,13 +15,6 @@ export default function Header() {
     }
 
     window.location.href = '/#kontakt';
-    setIsMenuOpen(false);
-  };
-
-  const handleWhatsAppClick = () => {
-    if (typeof window === 'undefined') return;
-    // WhatsApp: Berlin number
-    window.open('https://wa.me/4915217782301', '_blank', 'noopener,noreferrer');
     setIsMenuOpen(false);
   };
 
@@ -48,42 +40,12 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window === 'undefined') return;
-
-      const currentY = window.scrollY || window.pageYOffset;
-      const lastY = lastScrollYRef.current;
-
-      const THRESHOLD = 16;
-
-      if (Math.abs(currentY - lastY) < THRESHOLD) {
-        return;
-      }
-
-      if (currentY > lastY && currentY > 80) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
-
-      lastScrollYRef.current = currentY;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const linkClasses =
     'relative text-[0.7rem] lg:text-xs font-medium tracking-[0.22em] uppercase text-[#0F3D8C] hover:text-[#1C5BBF] transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:scale-x-0 after:bg-[#1C5BBF] after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100';
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#E5E7EB] shadow-[0_10px_30px_rgba(15,61,140,0.12)] transform transition-transform duration-300 ${
-        isHidden ? '-translate-y-full' : 'translate-y-0'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#E5E7EB] shadow-[0_10px_30px_rgba(15,61,140,0.12)]"
     >
       {/* TOP BAR */}
       <div className="bg-gradient-to-r from-[#0F3D8C] via-[#1C5BBF] to-[#2F7FEF] text-[0.65rem] text-white/85">
@@ -101,7 +63,13 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-3 py-3 md:py-3.5 flex items-center gap-4">
         {/* LEFT — LOGO */}
         <a href="/#hero" className="cursor-pointer flex items-center gap-3">
-          <img src="/images/logo.png" alt="myclean Logo" className="h-10 md:h-12 w-auto" />
+          <img
+            src="/images/logo-96.webp"
+            srcSet="/images/logo-96.webp 96w, /images/logo-192.webp 192w"
+            sizes="48px"
+            alt="myclean Logo"
+            className="h-10 md:h-12 w-auto"
+          />
           <span
             className="text-base md:text-lg font-semibold tracking-[0.20em] uppercase text-[#1C5BBF]"
             style={{
@@ -152,15 +120,22 @@ export default function Header() {
           </a>
         </nav>
 
+        <a
+          href="/#kontakt"
+          className="hidden md:inline-flex items-center justify-center rounded-full bg-[color:var(--accent-solid)] px-5 py-3 text-xs font-semibold tracking-[0.16em] uppercase text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] hover:brightness-105"
+        >
+          Angebot sichern
+        </a>
+
         {/* MOBILE MENU TOGGLE + ACTION BUTTONS (CALL + MAIL) */}
         <div className="md:hidden flex items-center justify-end gap-3 ml-auto">
           <button
             type="button"
             onClick={handleEmailClick}
-            aria-label="Kontaktformular"
+            aria-label="Kontaktformular öffnen"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[color:var(--accent-solid)] border border-[rgba(var(--accent),0.55)] hover:brightness-105 transition-colors shadow-[0_10px_26px_rgba(15,23,42,0.22)]"
           >
-            <i className="ri-phone-line text-base text-white" />
+            <Phone className="h-4 w-4 text-white" aria-hidden="true" />
           </button>
           <button
             className="w-9 h-9 flex items-center justify-center bg-transparent border-none hover:bg-black/5 rounded-full transition-colors"
@@ -168,23 +143,7 @@ export default function Header() {
             aria-expanded={isMenuOpen}
             aria-label="Menü"
           >
-            <span className="relative flex h-5 w-7 items-center justify-center">
-              <span
-                className={`absolute h-[2px] w-7 rounded-full bg-[#111827] transition-transform duration-300 ${
-                  isMenuOpen ? 'translate-y-0 rotate-45' : '-translate-y-1.5 rotate-0'
-                }`}
-              />
-              <span
-                className={`absolute h-[2px] w-7 rounded-full bg-[#111827] transition-opacity duration-300 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
-              <span
-                className={`absolute h-[2px] w-7 rounded-full bg-[#111827] transition-transform duration-300 ${
-                  isMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1.5 rotate-0'
-                }`}
-              />
-            </span>
+            {isMenuOpen ? <X className="h-6 w-6 text-[#111827]" aria-hidden="true" /> : <Menu className="h-6 w-6 text-[#111827]" aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -199,21 +158,21 @@ export default function Header() {
       >
         <div className="flex flex-col gap-5">
           <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={handleWhatsAppClick}
-              aria-label="WhatsApp"
+            <a
+              href="tel:+4915217782301"
+              aria-label="Telefonisch kontaktieren"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--accent-solid)] border border-[rgba(var(--accent),0.55)] shadow-[0_10px_26px_rgba(15,23,42,0.22)] hover:brightness-105 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
             >
-              <i className="ri-whatsapp-line text-lg text-white" />
-            </button>
+              <Phone className="h-5 w-5 text-white" aria-hidden="true" />
+            </a>
             <button
               type="button"
               onClick={handleHelpClick}
               aria-label="FAQ"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(var(--accent),0.14)] border border-[rgba(var(--accent),0.40)] shadow-[0_10px_26px_rgba(15,23,42,0.10)] hover:bg-[rgba(var(--accent),0.20)] hover:border-[rgba(var(--accent),0.60)] transition-colors"
             >
-              <i className="ri-question-line text-lg text-[color:var(--page-fg-solid)]" />
+              <CircleHelp className="h-5 w-5 text-[color:var(--page-fg-solid)]" aria-hidden="true" />
             </button>
           </div>
 

@@ -60,6 +60,8 @@ export default function SpecialsSection() {
                 <button
                   type="button"
                   onClick={() => handleToggle(index)}
+                  aria-expanded={isActive}
+                  aria-controls={`faq-answer-${index}`}
                   className="w-full flex items-center justify-between gap-4 px-5 py-4 md:px-6 md:py-5 text-left"
                 >
                   <span className="text-sm md:text-base font-medium text-[color:var(--page-fg)]">
@@ -74,6 +76,7 @@ export default function SpecialsSection() {
                   </span>
                 </button>
                 <div
+                  id={`faq-answer-${index}`}
                   className={
                     `grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none border-t ` +
                     (isActive

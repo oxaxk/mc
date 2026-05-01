@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Button from '../../../components/base/Button';
 
 export default function ContactSection() {
@@ -57,8 +59,8 @@ export default function ContactSection() {
         </h2>
 
         <p className="text-base md:text-lg mb-6 text-center text-[color:var(--page-fg-80)]">
-          Für Angebote, Besichtigungen und Rückfragen können Sie uns telefonisch erreichen oder das Formular nutzen.
-          Wir melden uns mit Rückfragen oder einem passenden Vorschlag für Ihr Objekt.
+          Starten Sie mit einer Anfrage. Wir prüfen Ihr Objekt, klären Umfang und Intervalle
+          und melden uns mit dem nächsten Schritt.
         </p>
 
         <div className="mt-2 grid gap-10 md:grid-cols-[1.05fr,1.15fr] items-start">
@@ -69,7 +71,7 @@ export default function ContactSection() {
                 size="md"
                 className="gap-2 px-6 py-3 rounded-full bg-[color:var(--accent-solid)] text-white border border-[color:rgba(var(--accent),0.55)] shadow-[0_12px_30px_rgba(15,23,42,0.18)] hover:shadow-[0_16px_40px_rgba(15,23,42,0.22)] tracking-[0.18em] uppercase text-[0.7rem]"
               >
-                <i className="ri-phone-line text-lg mr-1" />
+                <Phone className="h-5 w-5" aria-hidden="true" />
                 Direkt anrufen
               </Button>
               <Button
@@ -77,7 +79,7 @@ export default function ContactSection() {
                 size="md"
                 className="gap-2 px-6 py-3 rounded-full bg-[color:var(--accent-solid)] text-white border border-[rgba(var(--accent),0.55)] shadow-[0_12px_30px_rgba(15,23,42,0.18)] hover:shadow-[0_16px_40px_rgba(15,23,42,0.22)] tracking-[0.18em] uppercase text-[0.7rem]"
               >
-                <i className="ri-mail-line text-lg mr-1" />
+                <Mail className="h-5 w-5" aria-hidden="true" />
                 E-Mail schreiben
               </Button>
             </div>
@@ -121,18 +123,18 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Name*</label>
-                <input type="text" required className={fieldClass} name="name" />
+                <label htmlFor="contact-name" className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Name*</label>
+                <input id="contact-name" type="text" required className={fieldClass} name="name" autoComplete="name" />
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">E-Mail*</label>
-                <input type="email" required className={fieldClass} name="email" />
+                <label htmlFor="contact-email" className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">E-Mail*</label>
+                <input id="contact-email" type="email" required className={fieldClass} name="email" autoComplete="email" />
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Anliegen*</label>
-                <select required className={fieldClass} style={{ backgroundPosition: 'right 1rem center' }} name="service">
+                <label htmlFor="contact-service" className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Anliegen*</label>
+                <select id="contact-service" required className={fieldClass} style={{ backgroundPosition: 'right 1rem center' }} name="service">
                   <option value="">Bitte auswählen</option>
                   <option value="unterhaltsreinigung">Unterhaltsreinigung Büro / Praxis</option>
                   <option value="treppenhausreinigung">Treppenhausreinigung</option>
@@ -144,13 +146,14 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Wunschtermin (optional)</label>
-                <input type="date" className={fieldClass} name="date" />
+                <label htmlFor="contact-date" className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Wunschtermin (optional)</label>
+                <input id="contact-date" type="date" className={fieldClass} name="date" />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Nachricht*</label>
+                <label htmlFor="contact-message" className="block mb-2 text-sm font-medium text-[color:var(--page-fg-solid)]">Nachricht*</label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={4}
                   className={fieldClass}
@@ -158,6 +161,16 @@ export default function ContactSection() {
                   name="message"
                 />
               </div>
+
+              <p className="md:col-span-2 text-xs leading-relaxed text-[color:var(--page-fg-70)]">
+                Mit dem Absenden verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage. Die Verarbeitung erfolgt
+                je nach Anliegen zur Durchführung vorvertraglicher Maßnahmen oder auf Grundlage unseres berechtigten
+                Interesses an der Beantwortung Ihrer Nachricht. Details finden Sie in der{' '}
+                <Link to="/datenschutz" className="font-semibold underline underline-offset-2">
+                  Datenschutzerklärung
+                </Link>
+                .
+              </p>
 
               <div className="md:col-span-2 flex justify-end">
                 <button
