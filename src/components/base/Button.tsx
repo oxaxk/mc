@@ -43,9 +43,18 @@ export default function Button({
   
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  const isInternal = typeof href === 'string' && (href.startsWith('/') || href.startsWith('#'));
+  const isHashLink = typeof href === 'string' && (href.startsWith('#') || href.startsWith('/#'));
+  const isInternal = typeof href === 'string' && href.startsWith('/') && !isHashLink;
   
   if (href) {
+    if (isHashLink) {
+      return (
+        <a href={href} className={classes} onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}>
+          {children}
+        </a>
+      );
+    }
+
     if (isInternal) {
       return (
         <Link to={href} className={classes} onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}>
