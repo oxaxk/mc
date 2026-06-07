@@ -7,3 +7,4 @@ dist/
 .env.*
 source-images/
 source-assets/
+.vercel

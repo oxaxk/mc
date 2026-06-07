@@ -64,21 +64,10 @@ export default function Header() {
         {/* LEFT — LOGO */}
         <a href="/#hero" className="cursor-pointer flex items-center gap-3">
           <img
-            src="/images/logo-96.webp"
-            srcSet="/images/logo-96.webp 96w, /images/logo-192.webp 192w"
-            sizes="48px"
-            alt="myclean Logo"
-            className="h-10 md:h-12 w-auto"
+            src="/images/myclean-logo-lockup.svg"
+            alt="myclean Service Berlin Logo"
+            className="h-11 md:h-14 w-auto"
           />
-          <span
-            className="text-base md:text-lg font-semibold tracking-[0.20em] uppercase text-[#1C5BBF]"
-            style={{
-              fontFamily:
-                'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-            }}
-          >
-            MyClean Service
-          </span>
         </a>
 
         {/* DESKTOP NAV (ONEPAGER ANCHORS) */}

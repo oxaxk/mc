@@ -38,9 +38,9 @@ export default function Footer() {
               className="mb-4 flex items-center gap-3 justify-center md:justify-start"
             >
               <img
-                src="/images/logo-192.webp"
-                alt="myclean Logo"
-                className="h-20 md:h-28 w-auto"
+                src="/images/myclean-logo-lockup.svg"
+                alt="myclean Service Berlin Logo"
+                className="h-16 md:h-20 w-auto"
               />
             </button>
             <p className="text-[#111827]/70 mb-6 max-w-md text-sm md:text-base">

@@ -26,15 +26,32 @@ const heroImages = [
   }
 ];
 
+const heroHeadlines = [
+  'Büroreinigung in Berlin, die zuverlässig funktioniert.',
+  'Praxisreinigung in Berlin, die zuverlässig funktioniert.',
+  'Unterhaltsreinigung Berlin, planbar und zuverlässig.',
+  'Treppenhausreinigung Berlin, sauber und verlässlich.'
+];
+
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [headlineVisible, setHeadlineVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-    }, 3000);
+    let timeout: ReturnType<typeof setTimeout> | undefined;
 
-    return () => clearInterval(interval);
+    const interval = setInterval(() => {
+      setHeadlineVisible(false);
+      timeout = setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % heroHeadlines.length);
+        setHeadlineVisible(true);
+      }, 360);
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+      if (timeout) clearTimeout(timeout);
+    };
   }, []);
 
   const handleMoreClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -63,8 +80,13 @@ export default function HeroSection() {
             <p className="text-xs tracking-[0.18em] uppercase mb-4 text-[color:var(--accent-solid)]">
               Büroreinigung Berlin · Praxen · Hausverwaltungen
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.15rem] font-semibold leading-tight mb-4 text-[color:var(--page-fg)]">
-              Büroreinigung in Berlin, die zuverlässig funktioniert.
+            <h1
+              aria-live="polite"
+              className={`text-4xl sm:text-5xl lg:text-[3.15rem] font-semibold leading-tight mb-4 text-[color:var(--page-fg)] transition-all duration-500 ease-out motion-reduce:transition-none ${
+                headlineVisible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-2 blur-sm'
+              }`}
+            >
+              {heroHeadlines[currentIndex]}
             </h1>
             <p className="text-base sm:text-lg leading-relaxed text-[color:var(--page-fg)]/85 max-w-xl mx-auto md:mx-0">
               Weniger Abstimmungsaufwand bei der laufenden Reinigung. MyClean übernimmt

@@ -10,6 +10,7 @@ const NotFound = React.lazy(() => import('../pages/NotFound'));
 const Datenschutz = React.lazy(() => import('../pages/datenschutz/page'));
 const Impressum = React.lazy(() => import('../pages/impressum/page'));
 const CookieSettingsPage = React.lazy(() => import('../pages/cookie/page'));
+const ServicePage = React.lazy(() => import('../pages/service/page'));
 
 function LazyPage({ children }: { children: React.ReactNode }) {
   return (
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'home', element: <Home /> },
+      { path: 'leistungen/:slug', element: <LazyPage><ServicePage /></LazyPage> },
       { path: 'cookie', element: <LazyPage><CookieSettingsPage /></LazyPage> },
       { path: 'datenschutz', element: <LazyPage><Datenschutz /></LazyPage> },
       { path: 'impressum', element: <LazyPage><Impressum /></LazyPage> },

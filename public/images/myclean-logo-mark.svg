@@ -1,0 +1,28 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">myclean Logo Icon</title>
+  <desc id="desc">Blaues Reinigungs-Icon mit Blasen und Glanzsternen.</desc>
+  <defs>
+    <linearGradient id="bubble" x1="43" y1="34" x2="151" y2="161" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38C7FF"/>
+      <stop offset="0.48" stop-color="#168EEA"/>
+      <stop offset="1" stop-color="#0F3D8C"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="53" y1="31" x2="123" y2="101" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="20" y="18" width="150" height="154" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="15" stdDeviation="12" flood-color="#0F3D8C" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft-shadow)">
+    <circle cx="78" cy="110" r="53" fill="url(#bubble)"/>
+    <circle cx="130" cy="65" r="31" fill="url(#bubble)"/>
+    <circle cx="94" cy="96" r="18" fill="#fff"/>
+    <circle cx="126" cy="64" r="11" fill="#fff"/>
+    <circle cx="118" cy="129" r="9" fill="#fff"/>
+    <path d="M68 50C77.6 50 84.7 42.9 84.7 33.3C84.7 42.9 91.8 50 101.4 50C91.8 50 84.7 57.1 84.7 66.7C84.7 57.1 77.6 50 68 50Z" fill="url(#bubble)"/>
+    <path d="M138 126C148.9 126 157 117.9 157 107C157 117.9 165.1 126 176 126C165.1 126 157 134.1 157 145C157 134.1 148.9 126 138 126Z" fill="url(#bubble)"/>
+    <path d="M48 98C53.7 72 74.5 56 105 55" stroke="url(#shine)" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

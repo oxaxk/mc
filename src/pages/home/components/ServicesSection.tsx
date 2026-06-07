@@ -12,6 +12,7 @@ import {
   SquareStack,
 } from 'lucide-react';
 import Button from '../../../components/base/Button';
+import { servicePages } from '../../../data/servicePages';
 
 export default function ServicesSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,6 +27,7 @@ export default function ServicesSection() {
     {
       icon: Home,
       title: 'Unterhaltsreinigung',
+      slug: 'unterhaltsreinigung-berlin',
       description:
         'Regelmäßige Reinigung von Büros, Praxen und gewerblichen Flächen – nach festen Intervallen und klar definierten Leistungsumfängen.',
       image: '/images/services/5-720.webp'
@@ -33,6 +35,7 @@ export default function ServicesSection() {
     {
       icon: Building2,
       title: 'Büro- & Praxisreinigung',
+      slug: 'bueroreinigung-berlin',
       description:
         'Gründliche Reinigung von Arbeitsplätzen, Besprechungsräumen, Sanitärbereichen und Empfangszonen – auch außerhalb Ihrer Öffnungszeiten.',
       image: '/images/services/6-720.webp'
@@ -40,6 +43,7 @@ export default function ServicesSection() {
     {
       icon: ArrowDownUp,
       title: 'Treppenhausreinigung',
+      slug: 'treppenhausreinigung-berlin',
       description:
         'Saubere Treppenhäuser, Eingangsbereiche und Flure in Mietshäusern und Wohnanlagen – inklusive Geländer, Aufzüge und Briefkastenanlagen.',
       image: '/images/services/7-720.webp'
@@ -47,6 +51,7 @@ export default function ServicesSection() {
     {
       icon: SquareStack,
       title: 'Glas- & Fensterreinigung',
+      slug: 'glasreinigung-berlin',
       description:
         'Streifenfreie Glas- und Rahmenreinigung für Büros, Eingangsbereiche und Auslagen – auf Wunsch in regelmäßigen Intervallen.',
       image: '/images/services/8-720.webp'
@@ -54,6 +59,7 @@ export default function ServicesSection() {
     {
       icon: Hospital,
       title: 'Sensible Bereiche',
+      slug: 'praxisreinigung-berlin',
       description:
         'Reinigung von Praxen, Studios und sensiblen Bereichen mit klaren Hygiene-Routinen und abgestimmten Reinigungsplänen.',
       image: '/images/services/9-720.webp'
@@ -61,6 +67,7 @@ export default function ServicesSection() {
     {
       icon: Sparkles,
       title: 'Sonderreinigung',
+      slug: 'sonderreinigung-berlin',
       description:
         'Grundreinigung, Bauendreinigung oder einmalige Intensivreinigung – wenn Flächen einen extra gründlichen Reinigungsdurchgang brauchen.',
       image: '/images/services/10-720.webp'
@@ -287,6 +294,15 @@ export default function ServicesSection() {
                       >
                         {svc.description}
                       </p>
+                      {servicePages.some((service) => service.slug === svc.slug) ? (
+                        <a
+                          href={`/leistungen/${svc.slug}`}
+                          className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-[color:var(--accent-solid)] hover:underline"
+                        >
+                          Mehr erfahren
+                          <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 </div>
