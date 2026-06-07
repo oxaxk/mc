@@ -10,6 +10,12 @@ const NotFound = React.lazy(() => import('../pages/NotFound'));
 const Datenschutz = React.lazy(() => import('../pages/datenschutz/page'));
 const Impressum = React.lazy(() => import('../pages/impressum/page'));
 const CookieSettingsPage = React.lazy(() => import('../pages/cookie/page'));
+const LeistungenPage = React.lazy(() => import('../pages/leistungen/page'));
+const BranchenPage = React.lazy(() => import('../pages/branchen/page'));
+const MagazinPage = React.lazy(() => import('../pages/magazin/page'));
+const MagazinArticlePage = React.lazy(() => import('../pages/magazin/article'));
+const UeberUnsPage = React.lazy(() => import('../pages/ueber-uns/page'));
+const KontaktPage = React.lazy(() => import('../pages/kontakt/page'));
 const ServicePage = React.lazy(() => import('../pages/service/page'));
 
 function LazyPage({ children }: { children: React.ReactNode }) {
@@ -48,7 +54,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'home', element: <Home /> },
+      { path: 'leistungen', element: <LazyPage><LeistungenPage /></LazyPage> },
       { path: 'leistungen/:slug', element: <LazyPage><ServicePage /></LazyPage> },
+      { path: 'branchen', element: <LazyPage><BranchenPage /></LazyPage> },
+      { path: 'magazin', element: <LazyPage><MagazinPage /></LazyPage> },
+      { path: 'magazin/:slug', element: <LazyPage><MagazinArticlePage /></LazyPage> },
+      { path: 'ueber-uns', element: <LazyPage><UeberUnsPage /></LazyPage> },
+      { path: 'kontakt', element: <LazyPage><KontaktPage /></LazyPage> },
       { path: 'cookie', element: <LazyPage><CookieSettingsPage /></LazyPage> },
       { path: 'datenschutz', element: <LazyPage><Datenschutz /></LazyPage> },
       { path: 'impressum', element: <LazyPage><Impressum /></LazyPage> },

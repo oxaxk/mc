@@ -13,8 +13,8 @@
   --section-glass: rgba(234, 242, 255, 0.65);
   --card-glass: rgba(255, 255, 255, 0.82);
 
-  /* Accent (soft blue for light mode; used to de-neon cyan headings) */
-  --accent: 29 120 169;
+  /* Accent: muted premium blue, no cheap neon cyan */
+  --accent: 28 53 87;
   --accent-solid: rgb(var(--accent) / 1);
 }
 
@@ -30,8 +30,8 @@ html.dark {
   --section-glass: rgba(2, 6, 23, 0.72);
   --card-glass: rgba(2, 6, 23, 0.6);
 
-  /* Accent (slightly softer cyan for dark mode) */
-  --accent: 34 170 195;
+  /* Accent: visible on dark surfaces without neon overload */
+  --accent: 47 132 164;
   --accent-solid: rgb(var(--accent) / 1);
 }
 

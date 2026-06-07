@@ -24,7 +24,7 @@ export default function Button({
   target,
   rel
 }: ButtonProps) {
-  const baseClasses = 'inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--page-bg)] rounded-full';
+  const baseClasses = 'inline-flex max-w-full items-center justify-center font-semibold tracking-wide transition-[background-color,border-color,color,box-shadow,filter,transform] duration-300 cursor-pointer whitespace-normal sm:whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--page-bg)] rounded-full';
   
   const variants = {
     primary:

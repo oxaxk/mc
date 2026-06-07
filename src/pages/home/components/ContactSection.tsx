@@ -175,21 +175,23 @@ export default function ContactSection() {
               <div className="md:col-span-2 flex justify-end">
                 <button
                   type="submit"
-                  className="px-8 py-3 rounded-full font-semibold text-[0.75rem] sm:text-sm md:text-base shadow-[0_18px_40px_rgba(15,23,42,0.18)] hover:shadow-[0_22px_55px_rgba(15,23,42,0.22)] transition-all duration-300 border border-[rgba(var(--accent),0.55)] bg-[color:var(--accent-solid)] tracking-[0.22em] uppercase text-white"
+                  className="min-w-[11rem] rounded-full border border-[rgba(var(--accent),0.55)] bg-[color:var(--accent-solid)] px-7 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_40px_rgba(15,23,42,0.18)] transition-[background-color,border-color,box-shadow,filter] duration-300 hover:shadow-[0_22px_55px_rgba(15,23,42,0.22)] sm:text-sm md:text-base"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Wird gesendet…' : 'Nachricht senden'}
                 </button>
               </div>
 
-              {submitStatus === 'success' && (
-                <div className="md:col-span-2 text-right text-sm text-emerald-500">Deine Anfrage wurde erfolgreich gesendet.</div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="md:col-span-2 text-right text-sm text-red-500">
-                  Beim Senden ist ein Fehler aufgetreten. Bitte versuche es später erneut.
-                </div>
-              )}
+              <div className="min-h-5 md:col-span-2 text-right text-sm">
+                {submitStatus === 'success' && (
+                  <span className="text-emerald-500">Deine Anfrage wurde erfolgreich gesendet.</span>
+                )}
+                {submitStatus === 'error' && (
+                  <span className="text-red-500">
+                    Beim Senden ist ein Fehler aufgetreten. Bitte versuche es später erneut.
+                  </span>
+                )}
+              </div>
             </form>
           </div>
         </div>

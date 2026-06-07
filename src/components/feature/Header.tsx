@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { CircleHelp, Menu, Phone, X } from 'lucide-react';
 
+const navItems = [
+  { href: '/', label: 'Start' },
+  { href: '/leistungen', label: 'Leistungen' },
+  { href: '/branchen', label: 'Branchen' },
+  { href: '/magazin', label: 'Magazin' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -41,14 +50,14 @@ export default function Header() {
   };
 
   const linkClasses =
-    'relative text-[0.7rem] lg:text-xs font-medium tracking-[0.22em] uppercase text-[#0F3D8C] hover:text-[#1C5BBF] transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:scale-x-0 after:bg-[#1C5BBF] after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100';
+    'relative whitespace-nowrap text-[0.68rem] 2xl:text-xs font-medium tracking-[0.18em] uppercase text-[color:var(--accent-solid)] hover:opacity-80 transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:scale-x-0 after:bg-[color:var(--accent-solid)] after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100';
 
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#E5E7EB] shadow-[0_10px_30px_rgba(15,61,140,0.12)]"
     >
       {/* TOP BAR */}
-      <div className="bg-gradient-to-r from-[#0F3D8C] via-[#1C5BBF] to-[#2F7FEF] text-[0.65rem] text-white/85">
+      <div className="bg-gradient-to-r from-[#142033] via-[#1c3557] to-[#2f84a4] text-[0.65rem] text-white/85">
         <div className="max-w-7xl mx-auto px-3 py-1.5 flex items-center gap-3">
           <span
             className="inline-flex items-center tracking-[0.18em] uppercase"
@@ -60,64 +69,39 @@ export default function Header() {
       </div>
 
       {/* MAIN ROW */}
-      <div className="max-w-7xl mx-auto px-4 md:px-3 py-3 md:py-3.5 flex items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-3 md:py-3.5 flex items-center gap-4">
         {/* LEFT — LOGO */}
-        <a href="/#hero" className="cursor-pointer flex items-center gap-3">
+        <a href="/" className="cursor-pointer flex min-w-0 items-center gap-3">
           <img
             src="/images/myclean-logo-lockup.svg"
             alt="myclean Service Berlin Logo"
-            className="h-11 md:h-14 w-auto"
+            className="h-10 w-auto max-w-[170px] sm:h-12 sm:max-w-[215px] xl:h-14"
           />
         </a>
 
-        {/* DESKTOP NAV (ONEPAGER ANCHORS) */}
-        <nav className="hidden md:flex items-center gap-8 ml-auto">
-          <a
-            href="/#hero"
-            className={linkClasses}
-            style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
-          >
-            Home
-          </a>
-          <a
-            href="/#about"
-            className={linkClasses}
-            style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
-          >
-            Über uns
-          </a>
-          <a
-            href="/#services"
-            className={linkClasses}
-            style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
-          >
-            Leistungen
-          </a>
-          <a
-            href="/#faq"
-            className={linkClasses}
-            style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
-          >
-            FAQ
-          </a>
-          <a
-            href="/#kontakt"
-            className={linkClasses}
-            style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
-          >
-            Kontakt
-          </a>
+        {/* DESKTOP NAV */}
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-7 ml-auto">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={linkClasses}
+              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <a
-          href="/#kontakt"
-          className="hidden md:inline-flex items-center justify-center rounded-full bg-[color:var(--accent-solid)] px-5 py-3 text-xs font-semibold tracking-[0.16em] uppercase text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] hover:brightness-105"
+          href="/kontakt"
+          className="hidden xl:inline-flex items-center justify-center rounded-full bg-[color:var(--accent-solid)] px-5 py-3 text-xs font-semibold tracking-[0.16em] uppercase text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] hover:brightness-105"
         >
-          Angebot sichern
+          Anfrage starten
         </a>
 
         {/* MOBILE MENU TOGGLE + ACTION BUTTONS (CALL + MAIL) */}
-        <div className="md:hidden flex items-center justify-end gap-3 ml-auto">
+        <div className="xl:hidden flex items-center justify-end gap-3 ml-auto">
           <button
             type="button"
             onClick={handleEmailClick}
@@ -139,9 +123,9 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       <div
-        className={`md:hidden border-t border-black/5 px-6 overflow-hidden transform transition-all duration-300 ease-out ${
+        className={`xl:hidden border-t border-black/5 px-6 overflow-hidden transform transition-[max-height,opacity,padding,background-color] duration-300 ease-out ${
           isMenuOpen
-            ? 'bg-white/90 backdrop-blur-xl py-6 opacity-100 max-h-96'
+            ? 'bg-white/90 backdrop-blur-xl py-6 opacity-100 max-h-[calc(100vh-6.75rem)] overflow-y-auto'
             : 'bg-transparent backdrop-blur-0 py-0 opacity-0 max-h-0'
         }`}
       >
@@ -165,47 +149,18 @@ export default function Header() {
             </button>
           </div>
 
-          <div className="flex flex-col space-y-5">
-            <a
-              href="/#hero"
-              className="text-xs font-medium tracking-[0.22em] uppercase"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#0F3D8C' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="/#about"
-              className="text-xs font-medium tracking-[0.22em] uppercase"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#0F3D8C' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Über uns
-            </a>
-            <a
-              href="/#services"
-              className="text-xs font-medium tracking-[0.22em] uppercase"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#0F3D8C' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Leistungen
-            </a>
-            <a
-              href="/#faq"
-              className="text-xs font-medium tracking-[0.22em] uppercase"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#0F3D8C' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              FAQ
-            </a>
-            <a
-              href="/#kontakt"
-              className="text-xs font-medium tracking-[0.22em] uppercase"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#0F3D8C' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Kontakt
-            </a>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl border border-[rgba(15,23,42,0.10)] bg-white/80 px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--accent-solid)]"
+                style={{ fontFamily: 'Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

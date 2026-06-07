@@ -79,22 +79,27 @@ export default function Footer() {
             </h2>
             <ul className="space-y-2 text-sm md:text-base">
               <li>
-                <button type="button" onClick={() => goToSection('#hero')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
+                <button type="button" onClick={() => goToPageTop('/')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
                   Startseite
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => goToSection('#services')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
+                <button type="button" onClick={() => goToPageTop('/leistungen')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
                   Unsere Leistungen
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => goToSection('#faq')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
-                  FAQ
+                <button type="button" onClick={() => goToPageTop('/branchen')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
+                  Branchen
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => goToSection('#kontakt')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
+                <button type="button" onClick={() => goToPageTop('/magazin')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
+                  Magazin
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => goToPageTop('/kontakt')} className="text-[#111827]/70 hover:text-[#111827] transition-colors">
                   Kontakt & Anfrage
                 </button>
               </li>

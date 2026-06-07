@@ -6,8 +6,7 @@ import Footer from '../../components/feature/Footer';
 import Button from '../../components/base/Button';
 import StickyCTA from '../home/components/StickyCTA';
 import { getServicePage, servicePages } from '../../data/servicePages';
-
-const baseUrl = 'https://www.myclean-service.de';
+import { setPageSeo } from '../../lib/seo';
 
 export default function ServicePage() {
   const { slug } = useParams();
@@ -16,23 +15,28 @@ export default function ServicePage() {
   useEffect(() => {
     if (!service) return;
 
-    document.title = service.metaTitle;
-
-    let description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    if (!description) {
-      description = document.createElement('meta');
-      description.name = 'description';
-      document.head.appendChild(description);
-    }
-    description.content = service.metaDescription;
-
-    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
-    canonical.href = `${baseUrl}/leistungen/${service.slug}`;
+    setPageSeo({
+      title: service.metaTitle,
+      description: service.metaDescription,
+      path: `/leistungen/${service.slug}`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: service.title,
+        provider: {
+          '@type': 'CleaningService',
+          name: 'MyClean Service',
+          telephone: '+49 152 17782301',
+          areaServed: 'Berlin'
+        },
+        areaServed: {
+          '@type': 'City',
+          name: 'Berlin'
+        },
+        url: `https://www.myclean-service.de/leistungen/${service.slug}`,
+        description: service.summary
+      }
+    });
   }, [service]);
 
   if (!service) return <Navigate to="/" replace />;
@@ -41,24 +45,6 @@ export default function ServicePage() {
     .map((relatedSlug) => getServicePage(relatedSlug))
     .filter(Boolean);
 
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: service.title,
-    provider: {
-      '@type': 'CleaningService',
-      name: 'MyClean Service',
-      telephone: '+49 152 17782301',
-      areaServed: 'Berlin'
-    },
-    areaServed: {
-      '@type': 'City',
-      name: 'Berlin'
-    },
-    url: `${baseUrl}/leistungen/${service.slug}`,
-    description: service.summary
-  };
-
   return (
     <div className="min-h-screen pb-20 md:pb-0 bg-[var(--page-bg)] text-[color:var(--page-fg)]">
       <Header />
@@ -66,11 +52,13 @@ export default function ServicePage() {
         <section className="pt-36 md:pt-44 pb-16 bg-[var(--page-bg)]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-              <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(var(--accent),0.24)] shadow-[0_28px_80px_rgba(15,23,42,0.18)] bg-[rgba(var(--accent),0.08)]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-[rgba(var(--accent),0.24)] bg-[rgba(var(--accent),0.08)] shadow-[0_28px_80px_rgba(15,23,42,0.18)] md:aspect-[5/4] lg:aspect-[4/5]">
                 <img
                   src={service.heroImage}
                   alt={service.title}
-                  className="h-[340px] md:h-[520px] w-full object-cover"
+                  width={720}
+                  height={520}
+                  className="absolute inset-0 h-full w-full object-cover"
                   loading="eager"
                   decoding="async"
                 />
@@ -86,12 +74,12 @@ export default function ServicePage() {
                 <p className="mt-5 text-base sm:text-lg leading-relaxed text-[color:var(--page-fg)]/85 max-w-2xl">
                   {service.summary}
                 </p>
-                <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <Button href="/#kontakt" size="lg" className="gap-2 justify-center text-sm md:text-base px-7 py-4">
+                <div className="mt-8 flex flex-col items-start gap-3 lg:flex-row">
+                  <Button href="/kontakt" size="lg" className="w-fit max-w-full justify-center gap-2 px-6 py-3.5 text-sm md:text-base">
                     <CalendarCheck className="h-5 w-5" aria-hidden="true" />
                     Angebot anfragen
                   </Button>
-                  <Button href="tel:+4915217782301" variant="secondary" size="lg" className="gap-2 justify-center text-sm md:text-base px-7 py-4">
+                  <Button href="tel:+4915217782301" variant="secondary" size="lg" className="w-fit max-w-full justify-center gap-2 px-6 py-3.5 text-sm md:text-base">
                     <Phone className="h-5 w-5" aria-hidden="true" />
                     Direkt anrufen
                   </Button>
@@ -157,28 +145,26 @@ export default function ServicePage() {
                   Passende Leistungen
                 </h2>
               </div>
-              <Button href="/#kontakt" variant="secondary" className="gap-2">
+              <Button href="/kontakt" variant="secondary" className="gap-2">
                 Besichtigung anfragen
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid auto-rows-fr gap-4 md:grid-cols-3">
               {relatedServices.map((related) => (
                 <Link
                   key={related!.slug}
                   to={`/leistungen/${related!.slug}`}
-                  className="rounded-3xl border border-[rgba(15,23,42,0.14)] dark:border-white/10 bg-[var(--card-glass)] p-5 transition-all hover:-translate-y-1 hover:border-[rgba(var(--accent),0.45)]"
+                  className="flex h-full flex-col rounded-3xl border border-[rgba(15,23,42,0.14)] bg-[var(--card-glass)] p-5 transition-[border-color,box-shadow,transform] hover:-translate-y-1 hover:border-[rgba(var(--accent),0.45)] dark:border-white/10"
                 >
                   <span className="text-xs tracking-[0.18em] uppercase text-[color:var(--accent-solid)]">MyClean Service</span>
-                  <h3 className="mt-3 text-lg font-semibold text-[color:var(--page-fg)]">{related!.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[color:var(--page-fg)]/75">{related!.summary}</p>
+                  <h3 className="mt-3 break-words text-lg font-semibold text-[color:var(--page-fg)] [overflow-wrap:anywhere]">{related!.title}</h3>
+                  <p className="mt-2 line-clamp-4 text-sm leading-relaxed text-[color:var(--page-fg)]/75">{related!.summary}</p>
                 </Link>
               ))}
             </div>
           </div>
         </section>
-
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <StickyCTA />
       <Footer />

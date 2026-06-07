@@ -1,9 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
 import {
   ArrowDownUp,
   Building2,
-  ChevronLeft,
-  ChevronRight,
   ClipboardPen,
   Home,
   Hospital,
@@ -14,362 +11,103 @@ import {
 import Button from '../../../components/base/Button';
 import { servicePages } from '../../../data/servicePages';
 
+const iconBySlug = {
+  'unterhaltsreinigung-berlin': Home,
+  'bueroreinigung-berlin': Building2,
+  'treppenhausreinigung-berlin': ArrowDownUp,
+  'glasreinigung-berlin': SquareStack,
+  'praxisreinigung-berlin': Hospital,
+  'sonderreinigung-berlin': Sparkles,
+};
+
 export default function ServicesSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
-  const startXRef = useRef<number>(0);
-  const currentXRef = useRef<number>(0);
-  const isDraggingRef = useRef<boolean>(false);
-  const [slideStep, setSlideStep] = useState(0);
-
-  const services = [
-    {
-      icon: Home,
-      title: 'Unterhaltsreinigung',
-      slug: 'unterhaltsreinigung-berlin',
-      description:
-        'Regelmäßige Reinigung von Büros, Praxen und gewerblichen Flächen – nach festen Intervallen und klar definierten Leistungsumfängen.',
-      image: '/images/services/5-720.webp'
-    },
-    {
-      icon: Building2,
-      title: 'Büro- & Praxisreinigung',
-      slug: 'bueroreinigung-berlin',
-      description:
-        'Gründliche Reinigung von Arbeitsplätzen, Besprechungsräumen, Sanitärbereichen und Empfangszonen – auch außerhalb Ihrer Öffnungszeiten.',
-      image: '/images/services/6-720.webp'
-    },
-    {
-      icon: ArrowDownUp,
-      title: 'Treppenhausreinigung',
-      slug: 'treppenhausreinigung-berlin',
-      description:
-        'Saubere Treppenhäuser, Eingangsbereiche und Flure in Mietshäusern und Wohnanlagen – inklusive Geländer, Aufzüge und Briefkastenanlagen.',
-      image: '/images/services/7-720.webp'
-    },
-    {
-      icon: SquareStack,
-      title: 'Glas- & Fensterreinigung',
-      slug: 'glasreinigung-berlin',
-      description:
-        'Streifenfreie Glas- und Rahmenreinigung für Büros, Eingangsbereiche und Auslagen – auf Wunsch in regelmäßigen Intervallen.',
-      image: '/images/services/8-720.webp'
-    },
-    {
-      icon: Hospital,
-      title: 'Sensible Bereiche',
-      slug: 'praxisreinigung-berlin',
-      description:
-        'Reinigung von Praxen, Studios und sensiblen Bereichen mit klaren Hygiene-Routinen und abgestimmten Reinigungsplänen.',
-      image: '/images/services/9-720.webp'
-    },
-    {
-      icon: Sparkles,
-      title: 'Sonderreinigung',
-      slug: 'sonderreinigung-berlin',
-      description:
-        'Grundreinigung, Bauendreinigung oder einmalige Intensivreinigung – wenn Flächen einen extra gründlichen Reinigungsdurchgang brauchen.',
-      image: '/images/services/10-720.webp'
-    }
-  ];
-
-  const goToSlide = (index: number) => {
-    const normalizedIndex = (index + services.length) % services.length;
-    if (normalizedIndex === currentIndex) return;
-
-    setCurrentIndex(normalizedIndex);
-
-    const el = mobileScrollRef.current;
-    if (el && slideStep > 0) {
-      el.scrollTo({
-        left: normalizedIndex * slideStep,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    goToSlide(currentIndex + 1);
-    setTimeout(() => setIsTransitioning(false), 350);
-  };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    goToSlide(currentIndex - 1);
-    setTimeout(() => setIsTransitioning(false), 350);
-  };
-
-  // Touch/Mouse handlers for swipe functionality
-  const handleStart = (clientX: number) => {
-    if (isTransitioning) return;
-    isDraggingRef.current = true;
-    startXRef.current = clientX;
-    currentXRef.current = clientX;
-  };
-
-  const handleMove = (clientX: number) => {
-    if (!isDraggingRef.current || isTransitioning) return;
-    currentXRef.current = clientX;
-  };
-
-  const handleEnd = () => {
-    if (!isDraggingRef.current || isTransitioning) return;
-    
-    const deltaX = currentXRef.current - startXRef.current;
-    const threshold = 50;
-
-    if (Math.abs(deltaX) > threshold) {
-      if (deltaX > 0) {
-        prevSlide();
-      } else {
-        nextSlide();
-      }
-    }
-
-    isDraggingRef.current = false;
-  };
-
-  useEffect(() => {
-    const el = mobileScrollRef.current;
-    if (!el) return;
-
-    const compute = () => {
-      const first = el.querySelector<HTMLElement>('[data-slide]');
-      if (!first) return;
-
-      // width + gap (Tailwind gap-6 => 24px)
-      const gap = 24;
-      setSlideStep(first.offsetWidth + gap);
-    };
-
-    compute();
-
-    const ro = new ResizeObserver(() => compute());
-    ro.observe(el);
-
-    return () => {
-      ro.disconnect();
-    };
-  }, []);
-
-  // Mobile scroll handler for snap carousel
-  const handleMobileScroll = () => {
-    const el = mobileScrollRef.current;
-    if (!el || slideStep <= 0) return;
-
-    const newIndex = Math.round(el.scrollLeft / slideStep);
-    if (newIndex !== currentIndex) setCurrentIndex(newIndex);
-  };
-
-  // Mouse events
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    handleStart(e.clientX);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handleMove(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    handleEnd();
-  };
-
-  const handleMouseLeave = () => {
-    handleEnd();
-  };
-
-  // Touch events
-  const handleTouchStart = (e: React.TouchEvent) => {
-    handleStart(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    handleMove(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    handleEnd();
-  };
-
-  useEffect(() => {
-    const handleGlobalMouseUp = () => {
-      if (isDraggingRef.current) {
-        handleEnd();
-      }
-    };
-
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (isDraggingRef.current) {
-        handleMove(e.clientX);
-      }
-    };
-
-    document.addEventListener('mouseup', handleGlobalMouseUp);
-    document.addEventListener('mousemove', handleGlobalMouseMove);
-
-    return () => {
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-      document.removeEventListener('mousemove', handleGlobalMouseMove);
-    };
-  }, []);
-
-
   return (
     <section
       id="services"
-      className="py-24 bg-[var(--page-bg)] text-[color:var(--page-fg)] scroll-mt-28 md:scroll-mt-32"
+      className="py-20 sm:py-24 bg-[var(--page-bg)] text-[color:var(--page-fg)] scroll-mt-28 md:scroll-mt-32 overflow-x-clip"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto mb-12 lg:mb-16">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <div>
-              <p
-                className="text-xs tracking-[0.22em] uppercase mb-3 text-[color:var(--accent-solid)]"
-              >
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-10 max-w-6xl lg:mb-14">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="mb-3 text-xs tracking-[0.22em] uppercase text-[color:var(--accent-solid)]">
                 Leistungen &amp; Reinigungsbereiche
               </p>
-              <h2
-                className="text-3xl lg:text-4xl font-semibold mb-3 lg:mb-0 text-[color:var(--page-fg)]"
-              >
-                Reinigungsleistungen in Berlin &amp; Umgebung
+              <h2 className="text-balance text-3xl font-semibold leading-tight text-[color:var(--page-fg)] sm:text-4xl lg:text-5xl">
+                Reinigungsleistungen in Berlin, sauber geplant statt improvisiert.
               </h2>
             </div>
-            <p
-              className="text-sm lg:text-base opacity-90 max-w-xl lg:text-right text-[color:var(--page-fg)]/85"
-            >
-              Unterhaltsreinigung, Büro- und Praxisreinigung, Treppenhaus- sowie Glasreinigung – in allen Berliner Bezirken
-              und im direkten Umland. Mit festen Intervallen, klaren Zuständigkeiten und transparenten Absprachen.
+            <p className="max-w-xl text-sm leading-7 text-[color:var(--page-fg)]/80 sm:text-base lg:text-right">
+              Unterhaltsreinigung, Büro- und Praxisreinigung, Treppenhaus- sowie Glasreinigung mit festen
+              Intervallen, klaren Zuständigkeiten und einem Leistungsumfang, der zum Objekt passt.
             </p>
           </div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="rounded-[2rem] border border-[rgba(15,23,42,0.12)] bg-[var(--section-glass)] p-3 shadow-[0_22px_60px_rgba(15,23,42,0.14)] sm:p-5 lg:p-6">
+          <div className="grid min-w-0 auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {servicePages.map((svc) => {
+              const Icon = iconBySlug[svc.slug as keyof typeof iconBySlug] ?? Sparkles;
 
-          {/* Card Container in eigenem Panel */}
-          <div className="w-full px-0 lg:px-4">
-            <div
-              ref={mobileScrollRef}
-              className="w-full flex overflow-x-auto snap-x snap-mandatory gap-6 px-5 sm:px-6 py-6 rounded-3xl bg-[var(--section-glass)] border border-[rgba(15,23,42,0.14)] dark:border-white/10 shadow-[0_22px_60px_rgba(15,23,42,0.18)] no-scrollbar select-none"
-              onScroll={handleMobileScroll}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              style={{ WebkitOverflowScrolling: 'touch' }}
-            >
-              {services.map((svc) => {
-                const Icon = svc.icon;
-                return (
-                <div key={svc.title} data-slide className="shrink-0 w-[88%] sm:w-[78%] md:w-[44%] lg:w-[34%] snap-center">
-                  <div className="bg-[var(--card-glass)] border border-[rgba(15,23,42,0.14)] dark:border-white/10 rounded-[1.9rem] overflow-hidden shadow-[0_22px_70px_rgba(15,23,42,0.16)] transition-all duration-200 h-[520px] sm:h-[500px] md:h-[460px] lg:h-[480px] flex flex-col md:hover:border-[#22d3ee]/40 md:hover:shadow-[0_30px_90px_rgba(34,211,238,0.18)]">
-                    <div className="relative h-[54%] overflow-hidden">
+              return (
+                <article
+                  key={svc.slug}
+                  className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[1.65rem] border border-[rgba(15,23,42,0.12)] bg-[var(--card-glass)] shadow-[0_18px_46px_rgba(15,23,42,0.12)] transition duration-300 hover:-translate-y-1 hover:border-[rgba(var(--accent),0.42)] hover:shadow-[0_28px_70px_rgba(15,23,42,0.16)]"
+                >
+                  <a href={`/leistungen/${svc.slug}`} className="flex h-full flex-col focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(var(--accent),0.35)]">
+                    <div className="relative aspect-[16/10] overflow-hidden">
                       <img
-                        src={svc.image}
+                        src={svc.heroImage}
                         alt={svc.title}
-                        className="w-full h-full object-cover object-center"
-                        draggable={false}
+                        width={720}
+                        height={520}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#06111f]/42 via-transparent to-transparent" />
                     </div>
-                    <div className="px-6 pt-5 pb-6 md:pb-5 flex flex-col justify-start h-[40%]">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(var(--accent),0.16)] border border-[rgba(var(--accent),0.35)]">
+                    <div className="flex min-h-[17rem] flex-1 flex-col p-5 sm:p-6">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[rgba(var(--accent),0.35)] bg-[rgba(var(--accent),0.14)]">
                           <Icon className="h-5 w-5 text-[color:var(--accent-solid)]" aria-hidden="true" />
                         </span>
-                        <h3 className="text-sm md:text-base lg:text-lg font-semibold tracking-[0.16em] uppercase text-[color:var(--page-fg)]">
-                          {svc.title}
-                        </h3>
+                        <div className="min-w-0">
+                          <p className="truncate text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--accent-solid)]">
+                            {svc.eyebrow}
+                          </p>
+                          <h3 className="text-pretty break-words text-lg font-semibold leading-snug text-[color:var(--page-fg)] [overflow-wrap:anywhere]">
+                            {svc.title}
+                          </h3>
+                        </div>
                       </div>
-                      <p
-                        className="mt-3 leading-relaxed text-sm md:text-base text-[color:var(--page-fg)]/80"
-                      >
-                        {svc.description}
+                      <p className="mt-4 line-clamp-4 text-sm leading-7 text-[color:var(--page-fg)]/78">
+                        {svc.summary}
                       </p>
-                      {servicePages.some((service) => service.slug === svc.slug) ? (
-                        <a
-                          href={`/leistungen/${svc.slug}`}
-                          className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-[color:var(--accent-solid)] hover:underline"
-                        >
-                          Mehr erfahren
-                          <ChevronRight className="h-4 w-4" aria-hidden="true" />
-                        </a>
-                      ) : null}
+                      <span className="mt-auto inline-flex pt-5 text-sm font-semibold text-[color:var(--accent-solid)]">
+                        Mehr zur Leistung
+                      </span>
                     </div>
-                  </div>
-                </div>
+                  </a>
+                </article>
               );
-              })}
-            </div>
-          </div>
-
-
-          {/* Dots Navigation mit Pfeilen */}
-          <div className="flex flex-col items-center justify-center mt-8 lg:mt-12 gap-4">
-            <div className="flex items-center gap-4">
-              <button
-                type="button"
-                onClick={prevSlide}
-                disabled={isTransitioning}
-                aria-label="Vorherige Leistung anzeigen"
-                className="w-11 h-11 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
-              >
-                <ChevronLeft className="h-5 w-5 text-[color:var(--page-fg)]" aria-hidden="true" />
-              </button>
-
-              <div className="flex items-center gap-2">
-                {services.map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => goToSlide(index)}
-                    disabled={isTransitioning}
-                    aria-label={`Leistung ${index + 1} anzeigen`}
-                    aria-current={currentIndex === index}
-                    className={`h-11 rounded-full bg-[color:var(--accent-solid)] transition-all duration-300 cursor-pointer disabled:opacity-50 ${
-                      currentIndex === index ? 'w-11 opacity-100' : 'w-11 opacity-40'
-                    }`}
-                  >
-                    <span className="sr-only">Leistung {index + 1}</span>
-                  </button>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={nextSlide}
-                disabled={isTransitioning}
-                aria-label="Nächste Leistung anzeigen"
-                className="w-11 h-11 flex items-center justify-center rounded-full border border-[rgba(var(--accent),0.28)] bg-[var(--card-glass)] hover:border-[rgba(var(--accent),0.55)] hover:shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-200 cursor-pointer disabled:opacity-40"
-              >
-                <ChevronRight className="h-5 w-5 text-[color:var(--page-fg)]" aria-hidden="true" />
-              </button>
-            </div>
+            })}
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 mt-16">
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button
-            href="#kontakt"
+            href="/leistungen"
             size="lg"
-            className="w-full sm:w-[15.5rem] justify-center gap-2 text-[0.75rem] sm:text-sm md:text-base px-7 py-3.5 tracking-[0.22em] uppercase"
+            className="w-fit min-w-[12rem] justify-center gap-2 px-6 py-3.5 text-[0.75rem] uppercase tracking-[0.18em] sm:text-sm"
           >
             <ClipboardPen className="h-5 w-5" aria-hidden="true" />
-            Kostenlose Besichtigung
+            Alle Leistungen
           </Button>
           <Button
             href="tel:+4915217782301"
             size="lg"
-            className="w-full sm:w-[15.5rem] justify-center gap-2 text-[0.75rem] sm:text-sm md:text-base px-7 py-3.5 tracking-[0.22em] uppercase"
+            className="w-fit min-w-[12rem] justify-center gap-2 px-6 py-3.5 text-[0.75rem] uppercase tracking-[0.18em] sm:text-sm"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
             Jetzt anrufen

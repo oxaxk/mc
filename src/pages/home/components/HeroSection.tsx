@@ -36,6 +36,9 @@ const heroHeadlines = [
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [headlineVisible, setHeadlineVisible] = useState(true);
+  const contentSyncClasses = headlineVisible
+    ? 'opacity-100 translate-y-0'
+    : 'opacity-70 translate-y-1';
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout> | undefined;
@@ -80,26 +83,29 @@ export default function HeroSection() {
             <p className="text-xs tracking-[0.18em] uppercase mb-4 text-[color:var(--accent-solid)]">
               Büroreinigung Berlin · Praxen · Hausverwaltungen
             </p>
-            <h1
-              aria-live="polite"
-              className={`text-4xl sm:text-5xl lg:text-[3.15rem] font-semibold leading-tight mb-4 text-[color:var(--page-fg)] transition-all duration-500 ease-out motion-reduce:transition-none ${
-                headlineVisible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-2 blur-sm'
-              }`}
-            >
-              {heroHeadlines[currentIndex]}
-            </h1>
-            <p className="text-base sm:text-lg leading-relaxed text-[color:var(--page-fg)]/85 max-w-xl mx-auto md:mx-0">
+            <div className="relative mb-4 min-h-[9rem] lg:min-h-[12.75rem]">
+              <h1
+                aria-live="polite"
+                lang="de"
+                className={`absolute inset-x-0 top-0 break-words text-[2rem] font-semibold leading-tight text-[color:var(--page-fg)] transition-[opacity,transform,filter] duration-500 ease-out [hyphens:auto] [overflow-wrap:anywhere] min-[375px]:text-4xl lg:text-[3.15rem] motion-reduce:transition-none ${
+                  headlineVisible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-2 blur-sm'
+                }`}
+              >
+                {heroHeadlines[currentIndex]}
+              </h1>
+            </div>
+            <p className={`mx-auto max-w-xl text-base leading-relaxed text-[color:var(--page-fg)]/85 transition-[opacity,transform] duration-500 ease-out sm:text-lg md:mx-0 motion-reduce:transition-none ${contentSyncClasses}`}>
               Weniger Abstimmungsaufwand bei der laufenden Reinigung. MyClean übernimmt
               Unterhaltsreinigung für Büros, Praxen und Wohnanlagen mit festen Teams, klaren Checklisten und
               einem Angebot nach Besichtigung oder konkreter Objektbeschreibung.
             </p>
 
-            <div className="mt-8 space-y-4 w-full">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3">
+            <div className={`mt-8 w-full space-y-4 transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none ${contentSyncClasses}`}>
+              <div className="flex flex-col items-center justify-center gap-3 md:items-start lg:flex-row lg:items-center lg:justify-start">
                 <Button
                   href="#kontakt"
                   size="lg"
-                  className="gap-2 w-full sm:w-auto justify-center text-sm md:text-base px-7 py-4"
+                  className="w-fit max-w-full justify-center gap-2 px-6 py-3.5 text-sm md:text-base"
                 >
                   <CalendarCheck className="h-5 w-5" aria-hidden="true" />
                   Besichtigung anfragen
@@ -109,7 +115,7 @@ export default function HeroSection() {
                   href="tel:+4915217782301"
                   variant="secondary"
                   size="lg"
-                  className="hidden md:inline-flex gap-2 w-full sm:w-auto justify-center text-sm md:text-base px-7 py-4"
+                  className="hidden w-fit max-w-full justify-center gap-2 px-6 py-3.5 text-sm md:inline-flex md:text-base"
                 >
                   <Phone className="h-5 w-5" aria-hidden="true" />
                   Jetzt anrufen
@@ -151,6 +157,8 @@ export default function HeroSection() {
                   srcSet={image.srcSet}
                   sizes="(min-width: 768px) 448px, 85vw"
                   alt={image.alt}
+                  width={640}
+                  height={800}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
                     index === currentIndex ? 'opacity-100' : 'opacity-0'
                   }`}

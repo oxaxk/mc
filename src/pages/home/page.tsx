@@ -9,6 +9,7 @@ import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 import TeamSection from './components/TeamSection';
 import SpecialsSection from './components/SpecialsSection';
+import MagazineSection from './components/MagazineSection';
 import ContactSection from './components/ContactSection';
 import StickyCTA from './components/StickyCTA';
 
@@ -24,6 +25,7 @@ const Home = () => {
         <ProcessSection />
         <TeamSection />
         <SpecialsSection />
+        <MagazineSection />
         <ContactSection />
       </main>
       <StickyCTA />
